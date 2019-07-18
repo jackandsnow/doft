@@ -1,0 +1,87 @@
+/*main页面的布局*/
+body{
+    font-family: "微软雅黑";
+    font-size: 14px;
+    width: 100%;
+    left: 0px;
+}
+#left{
+    position: fixed;
+    float: left;
+    width: 20%;
+    overflow: auto;
+    min-height: 100%;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+#contain{
+    margin-left: 21%;
+    width: 79%;
+    float: left;
+    min-height: 100%;
+    /*max-height: 1000px;*/
+    background-color: #FEFEFB;
+    overflow: auto;
+}
+.bar{
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    background-color: #F2F2F2;
+    margin-bottom: 4px;
+    /*border-top: solid 0.2px darkgray;*/
+}
+
+#sideBar li a{
+    color: #fb9100 ;
+    text-decoration: none;
+}
+#sideBar li a:hover{
+    color: white;
+    background: #fb9100;
+}
+#sideBar .active{
+    /*color: white;*/
+    background-color: #fb9100;
+}
+#sideBar .active a{
+    color: white;
+}
+
+@media screen and (max-device-width: 640px){
+    #left{
+        position: fixed;
+        float: left;
+        width: 20%;
+        overflow: auto;
+        min-height: 600px;
+        padding-left: 0px;
+        margin-left: 0px;
+        font-size: 28px;
+    }
+    #contain{
+        margin-left: 20%;
+        width: 80%;
+        min-height: 80%;
+        background-color: #FEFEFB;
+        overflow: auto;
+    }
+    .bar{
+        display: block;
+        height: 70px;
+        line-height: 40px;
+        text-align: center;
+        color: white;
+        font-size: 30px;
+        background-color: #F2F2F2;
+        margin-bottom: 4px;
+        /*border-top: solid 0.2px darkgray;*/
+    }
+    #sideBar li a{
+        color: #fb9100 ;
+        height: 70px;
+        padding-top: 18px;
+    }
+}

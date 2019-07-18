@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doft.dao.RequisitionMapper" >
+  <resultMap id="BaseResultMap" type="com.doft.pojo.Requisition" >
+    <constructor >
+      <idArg column="REQ_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="REQ_NO" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="REQ_STATUS" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="REQ_TYPE" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="REQ_BY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="REQ_CONTENT" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ORDER_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="APPROVER" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CREATION_DATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATED_BY" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    REQ_ID, REQ_NO, REQ_STATUS, REQ_TYPE, REQ_BY, REQ_CONTENT, ORDER_ID, APPROVER, CREATION_DATE, 
+    CREATED_BY
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doft.pojo.RequisitionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_DOFT_REQUISITIONS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_DOFT_REQUISITIONS
+    where REQ_ID = #{reqId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from T_DOFT_REQUISITIONS
+    where REQ_ID = #{reqId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doft.pojo.RequisitionExample" >
+    delete from T_DOFT_REQUISITIONS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doft.pojo.Requisition" >
+    insert into T_DOFT_REQUISITIONS (REQ_ID, REQ_NO, REQ_STATUS, 
+      REQ_TYPE, REQ_BY, REQ_CONTENT, 
+      ORDER_ID, APPROVER, CREATION_DATE, 
+      CREATED_BY)
+    values (#{reqId,jdbcType=BIGINT}, #{reqNo,jdbcType=CHAR}, #{reqStatus,jdbcType=INTEGER}, 
+      #{reqType,jdbcType=INTEGER}, #{reqBy,jdbcType=VARCHAR}, #{reqContent,jdbcType=VARCHAR}, 
+      #{orderId,jdbcType=BIGINT}, #{approver,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, 
+      #{createdBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doft.pojo.Requisition" >
+    insert into T_DOFT_REQUISITIONS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="reqId != null" >
+        REQ_ID,
+      </if>
+      <if test="reqNo != null" >
+        REQ_NO,
+      </if>
+      <if test="reqStatus != null" >
+        REQ_STATUS,
+      </if>
+      <if test="reqType != null" >
+        REQ_TYPE,
+      </if>
+      <if test="reqBy != null" >
+        REQ_BY,
+      </if>
+      <if test="reqContent != null" >
+        REQ_CONTENT,
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="approver != null" >
+        APPROVER,
+      </if>
+      <if test="creationDate != null" >
+        CREATION_DATE,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="reqId != null" >
+        #{reqId,jdbcType=BIGINT},
+      </if>
+      <if test="reqNo != null" >
+        #{reqNo,jdbcType=CHAR},
+      </if>
+      <if test="reqStatus != null" >
+        #{reqStatus,jdbcType=INTEGER},
+      </if>
+      <if test="reqType != null" >
+        #{reqType,jdbcType=INTEGER},
+      </if>
+      <if test="reqBy != null" >
+        #{reqBy,jdbcType=VARCHAR},
+      </if>
+      <if test="reqContent != null" >
+        #{reqContent,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="approver != null" >
+        #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doft.pojo.RequisitionExample" resultType="java.lang.Integer" >
+    select count(*) from T_DOFT_REQUISITIONS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_DOFT_REQUISITIONS
+    <set >
+      <if test="record.reqId != null" >
+        REQ_ID = #{record.reqId,jdbcType=BIGINT},
+      </if>
+      <if test="record.reqNo != null" >
+        REQ_NO = #{record.reqNo,jdbcType=CHAR},
+      </if>
+      <if test="record.reqStatus != null" >
+        REQ_STATUS = #{record.reqStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.reqType != null" >
+        REQ_TYPE = #{record.reqType,jdbcType=INTEGER},
+      </if>
+      <if test="record.reqBy != null" >
+        REQ_BY = #{record.reqBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reqContent != null" >
+        REQ_CONTENT = #{record.reqContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderId != null" >
+        ORDER_ID = #{record.orderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.approver != null" >
+        APPROVER = #{record.approver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creationDate != null" >
+        CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdBy != null" >
+        CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_DOFT_REQUISITIONS
+    set REQ_ID = #{record.reqId,jdbcType=BIGINT},
+      REQ_NO = #{record.reqNo,jdbcType=CHAR},
+      REQ_STATUS = #{record.reqStatus,jdbcType=INTEGER},
+      REQ_TYPE = #{record.reqType,jdbcType=INTEGER},
+      REQ_BY = #{record.reqBy,jdbcType=VARCHAR},
+      REQ_CONTENT = #{record.reqContent,jdbcType=VARCHAR},
+      ORDER_ID = #{record.orderId,jdbcType=BIGINT},
+      APPROVER = #{record.approver,jdbcType=VARCHAR},
+      CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
+      CREATED_BY = #{record.createdBy,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doft.pojo.Requisition" >
+    update T_DOFT_REQUISITIONS
+    <set >
+      <if test="reqNo != null" >
+        REQ_NO = #{reqNo,jdbcType=CHAR},
+      </if>
+      <if test="reqStatus != null" >
+        REQ_STATUS = #{reqStatus,jdbcType=INTEGER},
+      </if>
+      <if test="reqType != null" >
+        REQ_TYPE = #{reqType,jdbcType=INTEGER},
+      </if>
+      <if test="reqBy != null" >
+        REQ_BY = #{reqBy,jdbcType=VARCHAR},
+      </if>
+      <if test="reqContent != null" >
+        REQ_CONTENT = #{reqContent,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        ORDER_ID = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="approver != null" >
+        APPROVER = #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null" >
+        CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where REQ_ID = #{reqId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doft.pojo.Requisition" >
+    update T_DOFT_REQUISITIONS
+    set REQ_NO = #{reqNo,jdbcType=CHAR},
+      REQ_STATUS = #{reqStatus,jdbcType=INTEGER},
+      REQ_TYPE = #{reqType,jdbcType=INTEGER},
+      REQ_BY = #{reqBy,jdbcType=VARCHAR},
+      REQ_CONTENT = #{reqContent,jdbcType=VARCHAR},
+      ORDER_ID = #{orderId,jdbcType=BIGINT},
+      APPROVER = #{approver,jdbcType=VARCHAR},
+      CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR}
+    where REQ_ID = #{reqId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectAllRequisitions" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM T_DOFT_REQUISITIONS
+    ORDER BY REQ_NO ASC
+  </select>
+
+  <select id="selectByRequisitionNo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM T_DOFT_REQUISITIONS
+    WHERE REQ_NO = #{requisitionNo,jdbcType=CHAR}
+  </select>
+
+  <select id="countByCreatedTime" resultType="java.lang.Long" parameterType="map">
+    SELECT COUNT(1)
+    FROM T_DOFT_REQUISITIONS
+    WHERE CREATION_DATE BETWEEN #{begin} AND #{end}
+  </select>
+
+  <select id="countByCreatedTimeAndStatus" resultType="java.lang.Long" parameterType="map">
+    SELECT COUNT(1)
+    FROM T_DOFT_REQUISITIONS
+    WHERE CREATION_DATE BETWEEN #{begin} AND #{end}
+    AND REQ_STATUS = #{status}
+  </select>
+</mapper>

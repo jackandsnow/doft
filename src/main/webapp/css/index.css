@@ -1,0 +1,316 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    height: 800px;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    background-color: white;
+}
+#header{
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    left: 0px;
+    background-color: white;
+    /*border-bottom: solid grey 1px;*/
+    z-index: 5;
+    box-shadow: 0px 0.2px 1.5px grey ;
+    overflow: hidden;
+}
+.header_main{
+    width: 70%;
+    height: 100px;
+    margin: 0 15%;
+    /*background-color: #62c462;*/
+}
+.logo{
+    display: inline-block;
+    /*position: fixed;*/
+    float:left;
+    left: 15%;
+    width: 20%;
+    height: 100px;
+    padding: 5px;
+}
+.logo_img{
+    width: 56px;
+    height: 56px;
+    padding: auto;
+    margin: auto;
+    margin-bottom: 3px;
+}
+.logo p{
+    text-align: center;
+    font-size: 18px;
+    color: #fb9100 ;
+}
+.search{
+    display: inline-block;
+    /*position: fixed;*/
+    width: 40%;
+    margin-top: 30px;
+    padding: 0px;
+    margin-left: 10%;
+    height: 100px;
+    /*background-color: #0e90d2;*/
+}
+.search input{
+    /*display: inline-block;*/
+    /*width: 80%;*/
+    /*height: 28px;*/
+    /*box-shadow: none;*/
+    /*outline: none;*/
+    /*border: 1px solid #fb9100;*/
+    border: none;
+    /* line-height: 100%; */
+    box-sizing: border-box;
+    display: inline-block!important;
+    /* padding: 10px; */
+    font-size: 14px;
+    /* height: 100%; */
+    background: 0 0;
+    width: 86%;
+    height: 40px;
+    border: 1px solid #FB9100;
+    box-shadow: none;
+    outline: none;
+}
+/*.search .search-btn{*/
+    /*position: absolute;*/
+    /*width: auto;*/
+    /*height: 28px;*/
+    /*margin-bottom: 3px;*/
+/*}*/
+/*.search .search-btn .btn{*/
+    /*width: 46px;*/
+    /*height: 38px;*/
+    /*outline: none;*/
+    /*border: 1px solid #fb9100;*/
+    /*background: transparent;*/
+/*}*/
+.search .btn{
+    display: inline-block;
+    outline: 0;
+    width: 14%;
+    box-sizing: border-box;
+    line-height: 100%;
+    height: 40px;
+    background: #FB9100;
+    border: none;
+    float: right;
+    color: #fff;
+    cursor: pointer;
+    /*border-bottom-left-radius: 0;*/
+    /*border-top-left-radius: 0;*/
+}
+.headBar,.pb,.order, .person{
+    display: inline-block;
+}
+.bar_list{
+    width: 50px;
+    z-index: 10;
+}
+.headBar{
+    font-size: 12px;
+    text-align: center;
+    color: darkgray;
+    float: right;
+    padding-top: 30px;
+
+}
+#main{
+    position: fixed; /* 固定定位，相对于浏览器窗口定位 */
+    width: 70%;
+    /*min-height: 800px;*/
+    right: 15%;
+    top: 100px;
+    bottom: 0px;
+    /*background-color: #0e90d2;*/
+}
+#footer{
+    display: none;
+}
+/*}*/
+.num_dish_in_car{
+    position: absolute;
+    float: left;
+    /*margin-left: 5px;*/
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    line-height: 15px;
+}
+
+
+@media screen and (max-width: 1000px) and (min-device-width: 640px){
+    #main{
+        position: fixed; /* 固定定位，相对于浏览器窗口定位 */
+        width: 100%;
+        top: 100px;
+        left: 0px;
+        bottom: 0px;
+    }
+    #header,#main{
+        min-width: 750px;
+    }
+    .header_main{
+        width: 90%;
+        height: 100px;
+        margin: 0px 5%;
+        /*background-color: #62c462;*/
+    }
+    #footer{
+        display: none;
+    }
+}
+@media screen and (max-device-width: 640px) {
+    #header{
+        position: fixed;
+        width: 100%;
+        height: 150px;
+        left: 0px;
+        background-color: white;
+        border-bottom: solid grey 1px;
+        z-index: 5;
+    }
+    .header_main{
+        width: 100%;
+        height: 100px;
+        padding: 0px;
+        /*margin: 0 15%;*/
+        /*background-color: #62c462;*/
+    }
+    .logo{
+        display: inline-block;
+        position: fixed;
+        left: 30px;
+        width: 10%;
+        height: 100px;
+        padding: 0px;
+        margin-top: 30px;
+    }
+    .logo_img{
+        width: 70px;
+        height: 70px;
+        padding: auto;
+        margin: auto;
+        margin-top: 10px;
+    }
+    .logo img{
+        width: 70px;
+        height: 70px;
+    }
+    .logo p{
+        display: none;
+    }
+    .search{
+        display: inline-block;
+        position: fixed;
+        width: 70%;
+        height: 100px;
+        padding: 10px 4px;
+        margin-left: 5%;
+        /*background-color: #0e90d2;*/
+    }
+    .search input{
+        display: inline-block;
+        width: 85%;
+        height: 60px;
+        margin-top: 15px;
+        font-size: 25px;
+
+    }
+    .search .search-btn{
+        margin-left: 10px;
+        /*position: absolute;*/
+        width: auto;
+        height: 80px;
+    }
+    .search .search-btn button {
+        /*position: absolute;*/
+        width: auto;
+        height: 80px;
+        background: none;
+        border: none;
+        box-shadow: none;
+        /*margin-bottom: 3px;*/
+    }
+    .search .search-btn img {
+        /*position: absolute;*/
+        width: auto;
+        height: 50px;
+    }
+    .headBar,.pb,.order, .person{
+        display: inline-block;
+    }
+    .bar_list{
+        width: 45px;
+        z-index: 10;
+    }
+    .headBar{
+        display: none;
+    }
+    .headBar p {
+        display: none;
+    }
+    #main{
+        /*position: fixed; !* 固定定位，相对于浏览器窗口定位 *!*/
+        width: 100%;
+        top: 150px;
+        left: 0px;
+        bottom: 100px;
+        padding: 0px;
+    }
+    #footer{
+        display: block;
+        position: fixed;
+        width: 100%;
+        height: 100px;
+        right: 0px;
+        left:0px;
+        bottom: 0px;
+        z-index: 5;
+        /*background-color: #622;*/
+    }
+    .footBtn{
+        display: inline-block;
+        width: 24.5%;
+        height: 100%;
+        border:none;
+        border-right: solid gainsboro 1px;
+        margin: 0px;
+
+    }
+    #person_btn{
+        border: none;
+    }
+    .footBtn button{
+        width: 100%;
+        height: 100%;
+        border: none;
+        font-size: 35px;
+        background-color: #FB9100;
+        color: white;
+    }
+    .search .btn{
+        display: inline-block;
+        outline: 0;
+        width: 10%;
+        box-sizing: border-box;
+        line-height: 100%;
+        height: 60px;
+        background: #FB9100;
+        border: none;
+        float: right;
+        color: #fff;
+        cursor: pointer;
+        margin-top: 14px;
+    }
+
+}

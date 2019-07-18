@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Delicious on Fingertips | Statistics</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Morris charts -->
+    <link rel="stylesheet" href="../../bower_components/morris.js/morris.css">
+    <!--bootstrap table-->
+    <link rel="stylesheet" href="../../bower_components/bootstrap-table-develop/bootstrap-table.css">
+    <link rel="stylesheet" href="../../bower_components/bootstrap-table-develop/bootstrap-table.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../back-stage-dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../../back-stage-dist/css/ordertable.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="../../plugins/iCheck/flat/blue.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../back-stage-dist/css/skins/_all-skins.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="../../back-stage-dist/css/skins/skin-green.css">
+    <style>
+        .example-modal .modal {
+            position: relative;
+            top: auto;
+            bottom: auto;
+            right: auto;
+            left: auto;
+            display: block;
+            z-index: 1;
+        }
+
+        .example-modal .modal {
+            background: transparent !important;
+        }
+    </style>
+</head>
+<body class="hold-transition skin-black sidebar-mini">
+<div class="wrapper">
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="../orderManage/order-list.jsp" class="logo logo-blue">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>DOFT</b></span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><img src="../../back-stage-dist/img/login/doft_logo.png" class="login-doft-logo" alt="User Image">  点餐管理系统</span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <li class="dropdown messages-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-envelope-o"></i>
+                            <!--<span class="label label-success">4</span>-->
+                        </a>
+                        <!--<ul class="dropdown-menu">-->
+                            <!--<li class="header">你有4条新信息</li>-->
+                            <!--<li>-->
+                                <!--&lt;!&ndash; inner menu: contains the actual data &ndash;&gt;-->
+                                <!--<ul class="menu">-->
+                                    <!--<li>&lt;!&ndash; start message &ndash;&gt;-->
+                                        <!--<a href="#">-->
+                                            <!--<div class="pull-left">-->
+                                                <!--<img src="../../back-stage-dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
+                                            <!--</div>-->
+                                            <!--<h4>-->
+                                                <!--Johnny Mac-->
+                                                <!--<small><i class="fa fa-clock-o"></i> 5 mins</small>-->
+                                            <!--</h4>-->
+                                            <!--<p>下了新的订单</p>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <!--&lt;!&ndash; end message &ndash;&gt;-->
+                                    <!--<li>-->
+                                        <!--<a href="#">-->
+                                            <!--<div class="pull-left">-->
+                                                <!--<img src="../../back-stage-dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">-->
+                                            <!--</div>-->
+                                            <!--<h4>-->
+                                                <!--Maven Miller-->
+                                                <!--<small><i class="fa fa-clock-o"></i> 2 hours</small>-->
+                                            <!--</h4>-->
+                                            <!--<p>提出取消订单申请</p>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                        <!--<a href="#">-->
+                                            <!--<div class="pull-left">-->
+                                                <!--<img src="../../back-stage-dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">-->
+                                            <!--</div>-->
+                                            <!--<h4>-->
+                                                <!--Shelli Cyrus-->
+                                                <!--<small><i class="fa fa-clock-o"></i> Today</small>-->
+                                            <!--</h4>-->
+                                            <!--<p>提出加菜申请</p>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                        <!--<a href="#">-->
+                                            <!--<div class="pull-left">-->
+                                                <!--<img src="../../back-stage-dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">-->
+                                            <!--</div>-->
+                                            <!--<h4>-->
+                                                <!--Cody Neverland-->
+                                                <!--<small><i class="fa fa-clock-o"></i> Yesterday</small>-->
+                                            <!--</h4>-->
+                                            <!--<p>下了新的订单</p>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
+                            <!--<li class="footer"><a href="#">查看所有新消息</a></li>-->
+                        <!--</ul>-->
+                    </li>
+                    <!-- Notifications: style can be found in dropdown.less -->
+                    <li class="dropdown notifications-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bell-o"></i>
+                            <span id="new-notice-num-title" class="label label-warning">0</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">你有<span id="new-notice-num-top">0</span>条新通知</li>
+                            <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul id="new-notice" class="menu"></ul>
+                            </li>
+                            <li class="footer"><a href="#">以上为所有新通知</a></li>
+                        </ul>
+                    </li>
+                    <!-- Tasks: style can be found in dropdown.less -->
+                    <li class="dropdown tasks-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-flag-o"></i>
+                            <span id="new-task-num-title" class="label label-danger">0</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">你有<span id="new-task-num-top">0</span>项任务</li>
+                            <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul id="new-task" class="menu">
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="#">以上为所有任务</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="../../back-stage-dist/img/user2-160x160.jpg" id="userHeadUrl2" class="user-image" alt="User Image">
+                            <span class="hidden-xs" id="userName2"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img src="../../back-stage-dist/img/user2-160x160.jpg" id="userHeadUrl3" class="img-circle" alt="User Image">
+
+                                <p>
+                                    <span id="userName3"></span> - <span id="roleName"></span>
+                                    <small>注册自<span id="creationTime"></span></small>
+                                </p>
+                            </li>
+                            <!-- Menu Body -->
+                            <!--<li class="user-body">-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-xs-4 text-center">-->
+                                        <!--<a href="#">已处理订单</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-xs-4 text-center">-->
+                                        <!--<a href="#">已处理申请</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-xs-4 text-center">-->
+                                        <!--<a href="#">历史通知</a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; /.row &ndash;&gt;-->
+                            <!--</li>-->
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">个人主页</a>
+                                </div>
+                                <div class="pull-right">
+                                    <button type="button" id="log-out-btn" class="btn btn-default btn-flat">退出</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Control Sidebar Toggle Button -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img id="userHeadUrl" src="../../back-stage-dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p id="userName"></p>
+                    <a href="#" id="is-online"></a>
+                </div>
+            </div>
+            <!-- search form -->
+            <!--<form action="#" method="get" class="sidebar-form">-->
+                <!--<div class="input-group">-->
+                    <!--<input type="text" name="q" class="form-control" placeholder="搜索...">-->
+                    <!--<span class="input-group-btn">-->
+                <!--<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>-->
+                <!--</button>-->
+              <!--</span>-->
+                <!--</div>-->
+            <!--</form>-->
+            <!-- /.search form -->
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">MAIN FUNCTIONS</li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-sticky-note"></i> <span>订单管理</span>
+                        <span class="pull-right-container">
+                             <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li id="orderListSearch"><a href="../orderManage/order-list.jsp"><i class="fa fa-circle-o"></i> 订单列表</a></li>
+                        <li><a href="../orderManage/user-apply-list.jsp"><i class="fa fa-circle-o"></i> 用户申请列表</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-user"></i>
+                        <span>用户管理</span>
+                        <span id="new-user-label" class="pull-right-container">
+                            <!--<span  class="label label-primary pull-right">4</span>-->
+                            <i class="fa fa-angle-left pull-right"></i>
+                            <!--<span class="pull-right-container">-->
+                            <!--<small class="label pull-right bg-yellow">12</small>-->
+                            <!--<small class="label pull-right bg-green">16</small>-->
+                            <!--<small class="label pull-right bg-red">5</small>-->
+                            <!--`                </span>-->
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="../userManage/user-manage.jsp"><i class="fa fa-circle-o"></i> 用户列表</a></li>
+                        <!--<li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>-->
+                        <!--<li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>-->
+                        <!--<li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>-->
+                    </ul>
+                </li>
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-pie-chart"></i>
+                        <span>数据统计</span>
+                        <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="../dataCount/data-count.html"><i class="fa fa-circle-o"></i> 餐桌余量及销售额统计</a></li>
+                        <li><a href="../dataCount/dish-sale-count.jsp"><i class="fa fa-circle-o"></i> 菜品销量统计</a></li>
+                    </ul>
+                </li>
+
+                <li class="header">ADVANCED SETTINGS</li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-cog"></i>
+                        <span>系统设置</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="../systemSettings/basicSettings.jsp"><i class="fa fa-circle-o"></i>基本设置</a></li>
+                        <li><a href="../systemSettings/adminSettings.jsp"><i class="fa fa-circle-o"></i>人员设置</a></li>
+                    </ul>
+                </li>
+                <!--<li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>-->
+                <!--<li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>-->
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                数据统计
+                <small>餐桌余量及营业额统计</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+                <li><a href="../dataCount/data-count.html">数据统计</a></li>
+                <li class="active">餐桌余量及营业额统计</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Main row -->
+            <div class="row">
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3><span id="new-order-num">0</span><sup style="font-size: 20px"> 条</sup></h3>
+
+                            <p>新订单</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-clipboard"></i>
+                        </div>
+                        <a href="../orderManage/order-list.jsp" class="small-box-footer">查看全部订单 <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3><span id="new-req-num">0</span><sup style="font-size: 20px"> 条</sup></h3>
+
+                            <p>新申请</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-ios-list"></i>
+                        </div>
+                        <a href="../orderManage/user-apply-list.jsp" class="small-box-footer">查看全部申请 <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <h3><span id="new-user-num">0</span><sup style="font-size: 20px"> 位</sup></h3>
+
+                            <p>新用户</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="../userManage/user-manage.jsp" class="small-box-footer">查看所有用户 <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3><span id="new-dish-num">0</span><sup style="font-size: 20px"> 个</sup></h3>
+
+                            <p>新增菜品</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-android-restaurant"></i>
+                        </div>
+                        <a href="../systemSettings/basicSettings.jsp" class="small-box-footer">查看现有菜系菜品<i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+
+            <div class="row">
+                <!-- Left col -->
+                <div class="col-md-8">
+                    <!-- MAP & BOX PANE -->
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">餐桌占用情况</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table id="desk-table"></table>
+                        </div>
+                    </div>
+                    <!-- /.box -->
+
+                </div>
+                <!-- /.col -->
+                <div class="col-md-4">
+                    <div class="box box-danger">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">餐桌使用情况统计</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="chart-responsive">
+                                <!--<canvas id="pieChart" height="150"></canvas>-->
+                                <div class="chart" id="desk-count-chart" style="height: 200px; position: relative;"></div>
+                            </div>
+                            <!-- ./chart-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer no-padding">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">餐桌总量（桌） <span class="pull-right text-olive"><i class="fa  fa-circle"></i> <span id="desk-all-num">0/100%</span></span></a></li>
+                                <li><a href="#">已占用（桌） <span class="pull-right text-danger"><i class="fa  fa-adjust"></i>  <span id="desk-occupy-num">0/0%</span></span></a></li>
+                                <li><a href="#">空闲（桌）<span class="pull-right text-blue"><i class="fa  fa-adjust"></i>  <span id="desk-free-num">0/0%</span></span></a></li>
+                            </ul>
+                        </div>
+                        <!-- /.footer -->
+                    </div>
+                    <!-- /.box -->
+                <!-- /.col -->
+            </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-md-12">
+                        <!-- Tabs within a box -->
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">餐馆周营业额统计</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="chart">
+                                <canvas id="areaChart" style="height:250px"></canvas>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">餐馆月营业额统计</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="chart">
+                                <canvas id="lineChart" style="height:250px"></canvas>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 1.0.0
+        </div>
+        <strong>Copyright &copy; 2014-2016 <span>逆袭潮湿地气小组</span>. </strong> All rights
+        reserved.
+    </footer>
+
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../../bower_components/bootstrap-table-develop/bootstrap-table.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../../bower_components/bootstrap-table-develop/bootstrap-table-zh-CN.js"></script>
+<!-- SlimScroll -->
+<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../back-stage-dist/js/adminlte.min.js"></script>
+<!-- Morris.js charts -->
+<script src="../../bower_components/raphael/raphael.min.js"></script>
+<script src="../../bower_components/morris.js/morris.min.js"></script>
+<!-- jvectormap  -->
+<script src="../../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="../../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- ChartJS -->
+<script src="../../bower_components/chart.js/Chart.js"></script>
+<!-- Morris.js charts -->
+<script src="../../bower_components/raphael/raphael.min.js"></script>
+<script src="../../bower_components/morris.js/morris.min.js"></script>
+<!-- FLOT CHARTS -->
+<script src="../../bower_components/Flot/jquery.flot.js"></script>
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="../../bower_components/Flot/jquery.flot.resize.js"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src="../../bower_components/Flot/jquery.flot.pie.js"></script>
+<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+<script src="../../bower_components/Flot/jquery.flot.categories.js"></script>
+<script src="../../js/common_func.js"></script>
+
+<!--今日新增数量-->
+<script>
+    //    <!--今日新增订单数量-->
+    $(function () {
+        "use strict";
+        $.ajax({
+            type: 'post',
+            url: "http://192.168.1.180:8080/doft/manage/order/addedOrderCount.aj",
+            dataType: 'json',
+            xhrFields:{
+                withCredentials:true
+            },
+            crossDomain:true,
+            success: function(data){
+                if(data.status == '0'){
+                    var newOrderNum = data.data;
+                    $('#new-order-num').text(newOrderNum);
+                    if(parseInt(newOrderNum)!=0){
+                        var s = "<li>" + "<a href=\"../orderManage/order-list.jsp\">" + "<i class=\"fa fa-file-text text-primary\"></i> 新添加了"+newOrderNum+"个订单" + "</a>" + "</li>";
+                        document.getElementById("new-notice").innerHTML += s;
+                        var n = parseInt($('#new-notice-num-title').text());
+                        n+=1;
+                        $('#new-notice-num-title').text(n);
+                        $('#new-notice-num-top').text(n);
+                    }
+
+                }else if(data.status == '10'){
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }else{
+                    alert(data.msg);
+                }
+            },
+            error: function(data){
+                window.location.href="../login.jsp";
+            }
+        });
+    });
+    //    <!--今日新增申请数量-->
+    $(function () {
+        "use strict";
+        $.ajax({
+            type: 'post',
+            url: "http://192.168.1.180:8080/doft/manage/requisition/addedRequisitionCount.aj",
+            dataType: 'json',
+            xhrFields:{
+                withCredentials:true
+            },
+            crossDomain:true,
+            success: function(data){
+                if(data.status == '0'){
+                    var newReqNum = data.data;
+                    $('#new-req-num').text(newReqNum);
+                    if(parseInt(newReqNum)!=0){
+                        var s = "<li>" + "<a href=\"../orderManage/user-apply-list.jsp\">" + "<i class=\"fa fa-comments text-success\"></i> 新添加了"+newReqNum+"个申请" + "</a>" + "</li>";
+                        document.getElementById("new-notice").innerHTML += s;
+                        var n = parseInt($('#new-notice-num-title').text());
+                        n+=1;
+                        $('#new-notice-num-title').text(n);
+                        $('#new-notice-num-top').text(n);
+                    }
+
+                }else if(data.status == '10'){
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }else{
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }
+            },
+            error: function(data){
+                window.location.href="../login.jsp";
+            }
+        });
+    });
+    //    <!--今日新增用户数量-->
+    $(function () {
+        "use strict";
+        $.ajax({
+            type: 'post',
+            url: "http://192.168.1.180:8080/doft/manage/user/addedUserCount.aj",
+            dataType: 'json',
+            xhrFields:{
+                withCredentials:true
+            },
+            crossDomain:true,
+            success: function(data){
+                if(data.status == '0'){
+                    var newUserNum = data.data;
+                    $('#new-user-num').text(newUserNum);
+                    if(parseInt(newUserNum)!=0){
+                        var s = "<li>" + "<a href=\"../userManage/user-manage.jsp\">" + "<i class=\"fa fa-users text-maroon\"></i> 新添加了"+newUserNum+"个用户" + "</a>" + "</li>";
+                        document.getElementById("new-notice").innerHTML += s;
+                        var n = parseInt($('#new-notice-num-title').text());
+                        n+=1;
+                        $('#new-notice-num-title').text(n);
+                        $('#new-notice-num-top').text(n);
+                    }
+
+                }else if(data.status == '10'){
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }else{
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }
+            },
+            error: function(data){
+                window.location.href="../login.jsp";
+            }
+        });
+    });
+    //    <!--今日新增菜品数量-->
+    $(function () {
+        "use strict";
+        $.ajax({
+            type: 'post',
+            url: "http://192.168.1.180:8080/doft/manage/dish/addedDishCount.aj",
+            dataType: 'json',
+            xhrFields:{
+                withCredentials:true
+            },
+            crossDomain:true,
+            success: function(data){
+                if(data.status == '0'){
+                    var newDishNum = data.data;
+                    $('#new-dish-num').text(newDishNum);
+                    if(parseInt(newDishNum)!=0){
+                        var s = "<li>" + "<a href=\"../systemSettings/basicSettings.jsp\">" + "<i class=\"fa fa-cutlery text-orange\"></i> 新添加了"+newDishNum+"个菜品" + "</a>" + "</li>";
+                        document.getElementById("new-notice").innerHTML += s;
+                        var n = parseInt($('#new-notice-num-title').text());
+                        n+=1;
+                        $('#new-notice-num-title').text(n);
+                        $('#new-notice-num-top').text(n);
+                    }
+
+                }else if(data.status == '10'){
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }else{
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }
+            },
+            error: function(data){
+                window.location.href="../login.jsp";
+            }
+        });
+    });
+    //    <!--今日待处理申请数量-->
+    $(function () {
+        $.ajax({
+            type: 'post',
+            url: "http://192.168.1.180:8080/doft/manage/requisition/pendingRequisition.aj",
+            dataType: 'json',
+            xhrFields:{
+                withCredentials:true
+            },
+            crossDomain:true,
+            success: function(data){
+                if(data.status == '0'){
+                    var newReqNum = data.data;
+                    if(parseInt(newReqNum)!=0){
+                        var s = "<li>" + "<a href=\"../systemSettings/basicSettings.jsp\">" + "<i class=\"fa fa-comments text-success\"></i>  您有"+newReqNum+"条待处理申请" + "</a>" + "</li>";
+                        document.getElementById("new-task").innerHTML += s;
+                        var n = parseInt($('#new-task-num-title').text());
+                        n+=parseInt(newReqNum);
+                        $('#new-task-num-title').text(n);
+                        $('#new-task-num-top').text(n);
+                    }
+
+                }else if(data.status == '10'){
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }else{
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }
+            },
+            error: function(data){
+                window.location.href="../login.jsp";
+            }
+        });
+    });
+    //    <!--今日待处理订单数量-->
+    $(function () {
+        $.ajax({
+            type: 'post',
+            url: "http://192.168.1.180:8080/doft/manage/order/pendingDealOrder.aj",
+            dataType: 'json',
+            xhrFields:{
+                withCredentials:true
+            },
+            crossDomain:true,
+            success: function(data){
+                if(data.status == '0'){
+                    var newReqNum = data.data;
+                    if(parseInt(newReqNum)!=0){
+                        var s = "<li>" + "<a href=\"../orderManage/order-list.jsp\">" + "<i class=\"fa fa-file-text text-primary\"></i>  您有"+newReqNum+"条待处理订单" + "</a>" + "</li>";
+                        document.getElementById("new-task").innerHTML += s;
+                        var n = parseInt($('#new-task-num-title').text());
+                        n+=parseInt(newReqNum);
+                        $('#new-task-num-title').text(n);
+                        $('#new-task-num-top').text(n);
+                    }
+
+                }else if(data.status == '10'){
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }else{
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }
+            },
+            error: function(data){
+                window.location.href="../login.jsp";
+            }
+        });
+    });
+
+</script>
+
+<!--餐桌使用情况统计饼图 morris donut chart-->
+<script>
+    //
+    $(function () {
+        "use strict";
+        $.ajax({
+            type: 'post',
+            url: "http://192.168.1.180:8080/doft/manage/desk/getDeskTotal.aj",
+            dataType: 'json',
+            xhrFields:{
+                withCredentials:true
+            },
+            crossDomain:true,
+            success: function(data){
+                if(data.status == '0'){
+                    var splited = data.data.split(",");
+//                    var deskAllCount = data.data;
+//                    var deskOccupyCount = data.data;
+//                    var deskFreeCount = data.data;
+                    //DONUT CHART
+                    var donut = new Morris.Donut({
+                        element: 'desk-count-chart',
+                        resize: true,
+                        colors: ["#f56954", "#3c8dbc", "#00a65a"],
+                        data: [
+                            {label: "已占用餐桌", value: parseInt((splited[1].split("/"))[0])},
+                            {label: "空闲餐桌", value: parseInt((splited[2].split("/"))[0])}
+                        ],
+                        hideHover: 'auto'
+                    });
+                }else if(data.status == '10'){
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }else{
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }
+            },
+            error: function(data){
+                alert("获取餐桌使用情况饼图数据失败!");
+            }
+        });
+    });
+
+    $(function () {
+        "use strict";
+        $.ajax({
+            type: 'post',
+            url: "http://192.168.1.180:8080/doft/manage/desk/getDeskTotal.aj",
+            dataType: 'json',
+            xhrFields:{
+                withCredentials:true
+            },
+            crossDomain:true,
+            success: function(data){
+                if(data.status == '0'){
+                    var splited = data.data.split(",");
+                    $('#desk-all-num').text(splited[0]);
+                    $('#desk-occupy-num').text(splited[1]);
+                    $('#desk-free-num').text(splited[2]);
+                }else if(data.status == '10'){
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }else{
+                    alert(data.msg);
+                }
+            },
+            error: function(data){
+                alert("获取餐桌使用情况数据失败!");
+            }
+        });
+    });
+</script>
+
+<!--餐桌表 morris donut chart-->
+<script>
+    $(function () {
+        //console.log("in desk list");
+        $.ajax({
+            type: 'post',
+            url: "http://192.168.1.180:8080/doft/manage/desk/getDeskList.aj",
+            dataType: 'json',
+            xhrFields:{
+                withCredentials:true
+            },
+            crossDomain:true,
+            success: function(data, status){
+                if(data.status == '0'){
+                    //var dataObj=eval("("+data+")");
+                    var obj = [];
+                    for(var i=0;i<data.data.length;i++){
+                        var d = data.data[i];
+                        obj.push(d);
+                    }
+                    //console.log('status: '+status);
+                    $table = $('#desk-table').bootstrapTable({
+                        data:obj,
+                        queryParamsType: '',              //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
+                        //queryParams: queryParams,
+                        method: "post",
+                        ajaxOptions:{
+                            xhrFields:{
+                                withCredentials:true
+                            },
+                            crossDomain:true
+                        },
+                        pagination: true,
+                        sortable: true,                     //是否启用排序
+                        sortOrder: "asc",                   //排序方式
+                        pageNumber: 1,                      //初始化加载第一页，默认第一页
+                        pageSize: 10,                       //每页的记录行数（*）
+                        pageList: [10, 20, 50, 100],
+                        sidePagination: "client",         //分页方式：client客户端分页，server服务端分页（*）
+                        striped: true,                    //是否显示行间隔色
+                        cache: false,
+                        uniqueId: "orderNo",               //每一行的唯一标识，一般为主键列
+//                        height: 800,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                        paginationPreText: "上一页",
+                        paginationNextText: "下一页",
+                        showToggle: false,                    //是否显示详细视图和列表视图的切换按钮
+                        cardView: false,                    //是否显示详细视图
+                        search:true,
+                        showRefresh:false,
+                        showColumns:true,
+                        filter:true,
+                        trimOnSearch:true,
+                        columns: [
+                            {title: '#',formatter: function (value, row, index) {
+                                return index+1;
+                            }},
+                            { title: '餐桌号',field: 'deskId',sortable:true},
+                            { title: '餐桌状态', field: 'deskStatus' ,sortable:true,
+                                formatter: function (value, row, index) {
+                                    var labelColor = 'label-danger';
+                                    if(value == '空闲'){
+                                        labelColor = 'label-primary';
+                                    }
+                                    var html = '<span class=\"label '+labelColor+"\">"+value+"</span>";
+                                    return html;
+                                }},
+//                        { title: '操作',  formatter: function (value, row, index) {
+//                            return "<div class='btn-group'><button type='button' class='btn btn-default btn-sm' onclick='onEdit(this)'><i class='fa fa-edit'></i></button>" +
+//                                "<button type='button' class='btn btn-default btn-sm' onclick='onDelete(this)'><i class='fa fa-trash-o'></i></button></div>";
+//                        }}
+                        ]
+                    });
+                }else if(data.status == '10'){
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }else{
+                    alert(data.msg);
+                }
+            },
+            error: function(data){
+                alert("获取餐桌数据失败!");
+            }
+        })
+    })
+</script>
+
+<!--餐馆营业额曲线图 chartjs line chart-->
+<script>
+    $(function () {
+        "use strict";
+        $.ajax({
+            type: 'post',
+            url: "http://192.168.1.180:8080/doft/manage/sale/getWeekSaleAmount.aj",
+            dataType: 'json',
+            xhrFields:{
+                withCredentials:true
+            },
+            crossDomain:true,
+            success: function(data){
+                if(data.status == '0'){
+                    //console.log("in");
+                    drawWeekAreaChart(data.data);
+                }else if(data.status == '10'){
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }else{
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }
+            },
+            error: function(data){
+                alert("获取数据失败，请登录后重试!");
+                window.location.href="../login.jsp";
+            }
+        });
+    });
+
+    function drawWeekAreaChart(weekList) {
+        //console.log("in draw");
+        var xlabels = [];
+        var ydatas = [];
+        ////console.log("weekList.length:"+weekList.length);
+        var length = weekList.length;
+        for(var i=0; i<length; i++){
+            //console.log('what');
+            xlabels[i] = weekList[length - i - 1].date;
+            ydatas[i] = weekList[length - i - 1].amount;
+        }
+        ////console.log("in draw 2");
+        // Get context with jQuery - using jQuery's .get() method.
+        var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
+        // This will get the first returned node in the jQuery collection.
+        var areaChart       = new Chart(areaChartCanvas)
+
+        var areaChartData = {
+            labels  : xlabels,
+            datasets: [
+                {
+                    label               : 'Electronics',
+                    fillColor           : '#3b8bba',
+                    strokeColor         : 'rgba(210, 214, 222, 1)',
+                    pointColor          : 'rgba(210, 214, 222, 1)',
+                    pointStrokeColor    : '#3b8bba',
+                    pointHighlightFill  : '#fff',
+                    pointHighlightStroke: 'rgba(220,220,220,1)',
+                    data                : ydatas
+                }
+            ]
+        }
+
+        var areaChartOptions = {
+            //Boolean - If we should show the scale at all
+            showScale               : true,
+            //Boolean - Whether grid lines are shown across the chart
+            scaleShowGridLines      : false,
+            //String - Colour of the grid lines
+            scaleGridLineColor      : 'rgba(0,0,0,.05)',
+            //Number - Width of the grid lines
+            scaleGridLineWidth      : 1,
+            //Boolean - Whether to show horizontal lines (except X axis)
+            scaleShowHorizontalLines: true,
+            //Boolean - Whether to show vertical lines (except Y axis)
+            scaleShowVerticalLines  : true,
+            //Boolean - Whether the line is curved between points
+            bezierCurve             : true,
+            //Number - Tension of the bezier curve between points
+            bezierCurveTension      : 0.3,
+            //Boolean - Whether to show a dot for each point
+            pointDot                : false,
+            //Number - Radius of each point dot in pixels
+            pointDotRadius          : 4,
+            //Number - Pixel width of point dot stroke
+            pointDotStrokeWidth     : 1,
+            //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+            pointHitDetectionRadius : 20,
+            //Boolean - Whether to show a stroke for datasets
+            datasetStroke           : true,
+            //Number - Pixel width of dataset stroke
+            datasetStrokeWidth      : 2,
+            //Boolean - Whether to fill the dataset with a color
+            datasetFill             : true,
+            //String - A legend template
+            legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].lineColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+            //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio     : true,
+            //Boolean - whether to make the chart responsive to window resizing
+            responsive              : true
+        }
+
+        //Create the line chart
+        areaChart.Line(areaChartData, areaChartOptions);
+    }
+</script>
+<script>
+    $(function () {
+        "use strict";
+        $.ajax({
+            type: 'post',
+            url: "http://192.168.1.180:8080/doft/manage/sale/getMonthSaleAmount.aj",
+            dataType: 'json',
+            xhrFields:{
+                withCredentials:true
+            },
+            crossDomain:true,
+            success: function(data){
+                if(data.status == '0'){
+                    ////console.log("in");
+                    drawMonthAreaChart(data.data);
+                }else if(data.status == '10'){
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }else{
+                    alert(data.msg);
+                    window.location.href="../login.jsp";
+                }
+            },
+            error: function(data){
+                alert("获取数据失败，请登录后重试!");
+                window.location.href="../login.jsp";
+            }
+        });
+    });
+
+    function drawMonthAreaChart(monthList) {
+        var xlabels = [];
+        var ydatas = [];
+        //////console.log("weekList.length:"+weekList.length);
+        var length = monthList.length;
+        for(var i=0; i<length; i++){
+            xlabels[i] = monthList[length - i - 1].date;
+            ydatas[i] = monthList[length - i - 1].amount;
+            ////console.log("ydatas[i] "+ydatas[0] );
+        }
+        // Get context with jQuery - using jQuery's .get() method.
+        var lineChartCanvas          = $('#lineChart').get(0).getContext('2d')
+        var lineChart                = new Chart(lineChartCanvas);
+        var lineChartData = {
+            labels  : xlabels,
+            datasets: [
+                {
+                    label               : 'Electronics',
+                    fillColor           : 'rgba(210, 214, 222, 1)',
+                    strokeColor         : 'rgba(210, 214, 222, 1)',
+                    pointColor          : 'rgba(210, 214, 222, 1)',
+                    pointStrokeColor    : '#d12861',
+                    pointHighlightFill  : '#fff',
+                    pointHighlightStroke: 'rgba(220,220,220,1)',
+                    data                : ydatas
+                }
+//                {
+//                    label               : 'Digital Goods',
+//                    fillColor           : 'rgba(60,141,188,0.9)',
+//                    strokeColor         : 'rgba(60,141,188,0.8)',
+//                    pointColor          : '#3b8bba',
+//                    pointStrokeColor    : 'rgba(60,141,188,1)',
+//                    pointHighlightFill  : '#fff',
+//                    pointHighlightStroke: 'rgba(60,141,188,1)',
+//                    data                : [28, 48, 40, 19, 86, 27, 90]
+//                }
+            ]
+        }
+
+        var lineChartOptions = {
+            //Boolean - If we should show the scale at all
+            showScale               : true,
+            //Boolean - Whether grid lines are shown across the chart
+            scaleShowGridLines      : false,
+            //String - Colour of the grid lines
+            scaleGridLineColor      : 'rgba(0,0,0,.05)',
+            //Number - Width of the grid lines
+            scaleGridLineWidth      : 1,
+            //Boolean - Whether to show horizontal lines (except X axis)
+            scaleShowHorizontalLines: true,
+            //Boolean - Whether to show vertical lines (except Y axis)
+            scaleShowVerticalLines  : true,
+            //Boolean - Whether the line is curved between points
+            bezierCurve             : true,
+            //Number - Tension of the bezier curve between points
+            bezierCurveTension      : 0.3,
+            //Boolean - Whether to show a dot for each point
+            pointDot                : false,
+            //Number - Radius of each point dot in pixels
+            pointDotRadius          : 4,
+            //Number - Pixel width of point dot stroke
+            pointDotStrokeWidth     : 1,
+            //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+            pointHitDetectionRadius : 20,
+            //Boolean - Whether to show a stroke for datasets
+            datasetStroke           : true,
+            //Number - Pixel width of dataset stroke
+            datasetStrokeWidth      : 2,
+            //Boolean - Whether to fill the dataset with a color
+            datasetFill             : true,
+            //String - A legend template
+            legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].lineColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+            //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio     : true,
+            //Boolean - whether to make the chart responsive to window resizing
+            responsive              : true
+        }
+        //-------------
+        //- LINE CHART -
+        //--------------
+
+        lineChartOptions.datasetFill = false
+        lineChart.Line(lineChartData, lineChartOptions)
+    }
+
+</script>
+<script>
+    //展示用户信息
+    $(document).ready(function(){
+        $.ajax({
+            //get the input phoneNum;
+            url : "http://192.168.1.180:8080/user/get_information.do",//url
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            type : "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            //            data: {"phoneNumber":Uname,"password":Upass},
+            error : function(xhr, status, error) {
+                var s = "<i class=\"fa fa-circle text-gray\"></i>下线";
+                document.getElementById("is-online").innerHTML += s;
+                alert("请求失败，请重试");
+            },
+            success : function(Rdata) {
+                ////console.log(Rdata);
+                if (Rdata.status == '0'){
+                    ////console.log("ok");
+                    var user = Rdata.data;
+                    $("#userName").text(user.userName);
+                    $("#userHeadUrl").attr('src',user.headUrl);
+                    $("#userName2").text(user.userName);
+                    $("#userHeadUrl2").attr('src',user.headUrl);
+                    $("#userName3").text(user.userName);
+                    $("#userHeadUrl3").attr('src',user.headUrl);
+                    $('#creationTime').text(timestampToYMD(user.creationTime));
+                    if(user.roleId == 2){
+                        $('#roleName').text('超级管理员');
+                    }else if(user.roleId == 1){
+                        $('#roleName').text('普通管理员');
+                        var t = setTimeout("window.location.href=\"../orderManage/order-list-limit.jsp\"",500);
+                        //
+                    }else{
+                        alert("非管理员，无权进入");
+                        var t = setTimeout("window.location.href=\"../login.jsp\"",500);
+                    }
+                    var s = "<i class=\"fa fa-circle text-success\"></i>在线";
+                    document.getElementById("is-online").innerHTML += s;
+                }else{
+                    var s = "<i class=\"fa fa-circle text-gray\"></i>下线";
+                    document.getElementById("is-online").innerHTML += s;
+                    var t = setTimeout("window.location.href=\"../login.jsp\"",500);
+//                    alert("用户尚未登录，点击确定转到登录界面...");
+//                    window.location.href="../login.jsp";
+                }
+            }
+        });
+    });
+</script>
+<script>
+    $('#log-out-btn').click(function () {
+        $.ajax({
+            type: 'post',
+            url: "http://192.168.1.180:8080/doft/manage/user/logout.do",
+            xhrFields:{
+                withCredentials:true
+            },
+            crossDomain:true,
+            dataType: 'json',
+            success: function (data) {
+                if(data.status == '0'){
+                    window.location.href="../login.jsp";
+                }else{
+                    alert("请求失败，请重试");
+                    window.location.href="../login.jsp";
+                }
+
+            },
+            error: function (data) {
+                alert("请求失败，请重试")
+            }
+        });
+    });
+</script>
+</body>
+</html>
+

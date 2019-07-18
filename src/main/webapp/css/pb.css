@@ -1,0 +1,398 @@
+.dish_list{
+    display: block;
+    width: 100%;
+    min-height: 550px;
+    margin: 3px;
+    margin-top:0px;
+    margin-bottom: 100px;
+}
+.dish_list ul{
+    padding: 0px;
+    margin: 0px;
+}
+.dish_list li{
+    list-style: none;
+}
+.dish_list .dish{
+    display: block;
+    width: 100%;
+    height: 80px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+.dish_img,.dish_inf,.dish_total_money,.dish_add_pb{
+    display: inline-block;
+    float: left;
+    /*margin-right: 10px;*/
+}
+.dish_inf_money,.dish_inf_recommand{
+    display: inline-block;
+}
+.dish .dish_img{
+    width: 20%;
+    height: 80px;
+}
+.dish .dish_inf{
+    width: 33%;
+    height: 80px;
+    overflow: hidden;
+}
+.dish_inf .dish_inf_name{
+    padding: 3px;
+    width: 100%;
+    height: 35%;
+    font-size: 20px;
+}
+.dish_inf .dish_inf_money_and_recommand{
+    width: 100%;
+    height: 35%;
+}
+.dish_inf .dish_inf_money_and_recommand .dish_inf_money{
+    color: #fb9100;
+    font-size: 18px;
+    margin-right: 10px;
+}
+.dish_inf .dish_inf_dec{
+    width: 100%;
+    height: 30%;
+    color: grey;
+    padding-bottom: 5px;
+}
+.dish .dish_total_money{
+    width: 13%;
+    height: 100%;
+    padding-top: 23px;
+    /*padding-right: 5px;*/
+    /*background-color: #2a85a0;*/
+    color: #fb9100;
+    font-size: 20px;
+}
+.dish .dish_add_pb{
+    width: 24%;
+    height: 80px;
+    padding:auto 0px;
+    padding-left: 5px;
+}
+.com_btn{
+    /*position: absolute;*/
+    float: left;
+    width: 80%;
+    max-width: 150px;
+    min-width: 60px;
+    height: 30px;
+    margin-top: 22px;
+    /* Rectangle: */
+    background: #FB9100;
+    border-radius: 4px;
+    /* 加入购物车: */
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    color: #FFFFFF;
+    border: none;
+    z-index: 3;
+}
+/*进行图片拉伸*/
+.dish img{
+    margin-left: 10%;
+    height: 80px;
+    width: 80px;
+}
+.pb_num{
+    width: 85%;
+    max-width: 150px;
+    min-width: 60px;
+    height: 30px;
+    margin-top: 22px;
+    /* Rectangle: */
+    background-color: #EEEEEC;
+    border-radius: 4px;
+    /* 加入购物车: */
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    /*color: #FB9100;*/
+    border: none;
+}
+.pb_num .dec{
+    display: inline-block;
+    height: 100%;
+    width: 30%;
+    float: left;
+    border-right: solid gainsboro 1px;
+    color: #FB9100;
+    text-align: center;
+    cursor: pointer;
+}
+.pb_num .add{
+    display: inline-block;
+    /*padding-left: 7%;*/
+    height: 100%;
+    width: 27%;
+    float: left;
+    color: #FB9100;
+    border-left: solid gainsboro 1px;
+    text-align: center;
+    cursor: pointer;
+}
+.pb_num .num{
+    display: inline-block;
+    height: auto;
+    width: 30%;
+    float: left;
+    color: #FB9100;
+    text-align: center;
+    font-style: normal;
+    /*font-size: 14px;*/
+    /*line-height: 24px;*/
+    border: 0;
+    background:none;
+    padding-top: 3px;
+    font-size: 16px;
+    overflow: hidden;
+}
+input[type="text"]{
+    font-size: 20px;
+    color: #FB9100;
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+    height: 25px;
+    width: 50px;
+    text-align: center;
+    border: 0px;
+    background:none;
+    box-shadow:none;
+}
+/*.pb_num .num input{*/
+   /**/
+/*}*/
+.pb_num input{
+    padding-top: 3px;
+    font-size: 16px;
+}
+
+.up_order{
+    position: fixed;
+    width: 74%;
+    height: 60px;
+    bottom: 0px;
+    background-color: white ;
+}
+.set_time, .total_money, .button_up{
+    display: inline-block;
+    float: left;
+}
+.set_time{
+    width: 40%;
+    height: 100%;
+    padding-left: 3%;
+    padding-top: 15px;
+    /*background-color: grey;*/
+}
+.show_time, .set_time_btn{
+    display: inline-block;
+    float: left;
+    margin-left: 20%;
+}
+.show_time{
+    margin-top: 5px;
+    height: 100%;
+    width: 40%;
+    text-align: center;
+    color: #fb9100;
+}
+.mybtn{
+    border-radius: 4px;
+    /* 加入购物车: */
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: white;
+    border: none;
+    width: 120px;
+    background: #fb9100;
+    outline: none;
+}
+/*设置聚焦时的样式*/
+.mybtn:hover{
+    color: #fb9100;
+    /*background-color:#fb9100;*/
+}
+/*清楚点击后的样式*/
+/*.mybtn:focus{
+    display: none;
+}*/
+.total_money{
+    width: 28%;
+    height: 50px;
+    padding-top: 20px;
+    /*background-color: #2c8931;*/
+}
+.total_money p{
+    color: #fb9100;
+    float: right;
+    margin-right: 5px;
+    /*margin-top: 5px;*/
+}
+.button_up{
+    width: 22%;
+    height: 100%;
+    /*background-color: #2a85a0;*/
+}
+.button_up button{
+    margin-top: 15px;
+    margin-left: 10px ;
+}
+.total_money p{
+    margin-top:-15px;
+}
+.total_money p b{
+    font-size:20px;
+}
+#all_price{
+    color: #fb9100;font-size: 20px; margin-bottom: 5px; width: 65px;
+}
+#pre_price{
+    color: #fb9100; margin-bottom: 4px; font-size: 16px;
+}
+#empty_tips{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-top: 30%;
+    /*margin-left: 15px;*/
+    color: #fb9100;
+}
+#empty_tips p{
+    font-size: 18px;
+}
+@media screen and (max-device-width: 640px){
+    *{
+        font-size: 30px;
+    }
+    #left{
+        display: none;
+    }
+    #contain{
+        width: 100%;
+        height: 100%;
+        margin-left: 0px;
+    }
+    .dish_list .dish{
+        height: 120px;
+    }
+    .dish .dish_img{
+        height: auto;
+    }
+    .dish img{
+        height: 120px;
+        width: 120px;
+    }
+    .dish .dish_inf{
+        height: 100px;
+        width: 40%;
+        margin-top: 20px;
+    }
+    .dish_inf .dish_inf_name{
+        height: 47%;
+        line-height: 40px;
+
+    }
+    .dish .dish_add_pb{
+        height: 120px;
+    }
+    input[type="text"]{
+        font-size: 30px;
+        width: 60px;
+    }
+    .pb_num{
+        width: 94%;
+        max-width: 200px;
+        min-width: 60px;
+        height: 40px;
+        margin-top: 28px;
+        background-color: #EEEEEC;
+        border-radius: 4px;
+        font-family: PingFangSC-Regular;
+        font-size: 40px;
+        /* color: #FB9100; */
+        border: none;
+        overflow: hidden;
+    }
+    .dish .dish_total_money{
+        padding-top: 30px;
+        margin-left: -25px;
+    }
+    .pb_num input{
+        padding-top: 0px;
+        font-size: 25px;
+    }
+    .up_order {
+        position: fixed;
+        width: 100%;
+        height: 100px;
+        bottom: 0px;
+        font-size: 25px;
+        background-color: white;
+    }
+    .total_money{
+        height: 100%;
+    }
+    .button_up{
+        width: auto;
+        padding-left: 34px;
+        padding-top: 10px;
+    }
+    .show_time{
+        color: #fb9100;
+        margin-top: 15px;
+    }
+    .total_money p{
+        color: #fb9100;
+    }
+    .set_time{
+        padding-top:27px;
+    }
+    .total_money p{
+        margin-top: 4px;
+    }
+    .total_money p b{
+        font-size: 25px;
+    }
+    #all_price{
+        color: #FB9100;
+        font-size: 30px;
+        width: 100px;
+    }
+    #pre_price{
+        color: #FB9100;
+        margin-bottom: 4px;
+        font-size: 25px;
+        width: 80px;
+    }
+    .mybtn{
+        font-family: PingFangSC-Regular;
+        font-size: 30px;
+        color: white;
+        border-radius: 10px;
+        background: #FB9100;
+        width: 200px;
+        height: 60px;
+        z-index: 999;
+    }
+    .pb_num .num{
+        font-size: 25px;
+    }
+    .pb_num .dec{
+        margin-top: 4px;
+    }
+    .pb_num .add{
+        margin-top: 4px;
+    }
+    #empty_tips p {
+        font-size: 30px;
+    }
+    .show_time, .set_time_btn{
+        cursor:pointer
+    }
+
+
+}

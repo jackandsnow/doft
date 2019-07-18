@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doft.dao.SaleNumMapper" >
+  <resultMap id="BaseResultMap" type="com.doft.pojo.SaleNum" >
+    <constructor >
+      <idArg column="SALE_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="DISH_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="DAY_SALE_NUMBER" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="SALE_DATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SALE_ID, DISH_ID, DAY_SALE_NUMBER, SALE_DATE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doft.pojo.SaleNumExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_DOFT_SALE_NUMBERS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_DOFT_SALE_NUMBERS
+    where SALE_ID = #{saleId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from T_DOFT_SALE_NUMBERS
+    where SALE_ID = #{saleId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doft.pojo.SaleNumExample" >
+    delete from T_DOFT_SALE_NUMBERS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doft.pojo.SaleNum" >
+    insert into T_DOFT_SALE_NUMBERS (SALE_ID, DISH_ID, DAY_SALE_NUMBER, 
+      SALE_DATE)
+    values (#{saleId,jdbcType=BIGINT}, #{dishId,jdbcType=BIGINT}, #{daySaleNumber,jdbcType=BIGINT}, 
+      #{saleDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doft.pojo.SaleNum" >
+    insert into T_DOFT_SALE_NUMBERS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="saleId != null" >
+        SALE_ID,
+      </if>
+      <if test="dishId != null" >
+        DISH_ID,
+      </if>
+      <if test="daySaleNumber != null" >
+        DAY_SALE_NUMBER,
+      </if>
+      <if test="saleDate != null" >
+        SALE_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="saleId != null" >
+        #{saleId,jdbcType=BIGINT},
+      </if>
+      <if test="dishId != null" >
+        #{dishId,jdbcType=BIGINT},
+      </if>
+      <if test="daySaleNumber != null" >
+        #{daySaleNumber,jdbcType=BIGINT},
+      </if>
+      <if test="saleDate != null" >
+        #{saleDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doft.pojo.SaleNumExample" resultType="java.lang.Integer" >
+    select count(*) from T_DOFT_SALE_NUMBERS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_DOFT_SALE_NUMBERS
+    <set >
+      <if test="record.saleId != null" >
+        SALE_ID = #{record.saleId,jdbcType=BIGINT},
+      </if>
+      <if test="record.dishId != null" >
+        DISH_ID = #{record.dishId,jdbcType=BIGINT},
+      </if>
+      <if test="record.daySaleNumber != null" >
+        DAY_SALE_NUMBER = #{record.daySaleNumber,jdbcType=BIGINT},
+      </if>
+      <if test="record.saleDate != null" >
+        SALE_DATE = #{record.saleDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_DOFT_SALE_NUMBERS
+    set SALE_ID = #{record.saleId,jdbcType=BIGINT},
+      DISH_ID = #{record.dishId,jdbcType=BIGINT},
+      DAY_SALE_NUMBER = #{record.daySaleNumber,jdbcType=BIGINT},
+      SALE_DATE = #{record.saleDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doft.pojo.SaleNum" >
+    update T_DOFT_SALE_NUMBERS
+    <set >
+      <if test="dishId != null" >
+        DISH_ID = #{dishId,jdbcType=BIGINT},
+      </if>
+      <if test="daySaleNumber != null" >
+        DAY_SALE_NUMBER = #{daySaleNumber,jdbcType=BIGINT},
+      </if>
+      <if test="saleDate != null" >
+        SALE_DATE = #{saleDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SALE_ID = #{saleId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doft.pojo.SaleNum" >
+    update T_DOFT_SALE_NUMBERS
+    set DISH_ID = #{dishId,jdbcType=BIGINT},
+      DAY_SALE_NUMBER = #{daySaleNumber,jdbcType=BIGINT},
+      SALE_DATE = #{saleDate,jdbcType=TIMESTAMP}
+    where SALE_ID = #{saleId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectDistinctDishId" resultType="java.lang.Long" >
+    SELECT DISTINCT DISH_ID
+    FROM T_DOFT_SALE_NUMBERS
+    ORDER BY DISH_ID ASC
+  </select>
+
+  <select id="selectByDishId" resultType="java.lang.Long" parameterType="java.lang.Long" >
+    SELECT DAY_SALE_NUMBER
+    FROM T_DOFT_SALE_NUMBERS
+    WHERE DISH_ID = #{dishId}
+  </select>
+
+  <select id="selectByBeginAndEndTime" resultMap="BaseResultMap" parameterType="map">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM T_DOFT_SALE_NUMBERS
+    WHERE SALE_DATE BETWEEN #{begin} AND #{end}
+  </select>
+
+</mapper>

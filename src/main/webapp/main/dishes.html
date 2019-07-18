@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指尖上的美味</title>
+    <link rel="stylesheet" href="../resource/css/bootstrap.min.css" >
+    <!--<link rel="stylesheet" href="../resource/css/jquery-ui.min.css"-->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/dishes/dishes.css">
+    <!--<script type="text/javascript" src="../resource/js/jquery-ui.min.js"></script>-->
+    <script type="text/javascript" src="../resource/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resource/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../js/dishes.js"></script>
+</head>
+<body onload="freshen()">
+<div id="left">
+    <div id="sideBar">
+        <ul class="nav  nav-stacked">
+            <li id="01" class="bar active"><a href="#">日本菜</a></li>
+            <li id="02" class="bar "><a href="#">川 菜</a></li>
+            <li id="03" class="bar "><a href="#">家常菜</a></li>
+            <li id="04" class="bar "><a href="#">乡村菜</a></li>
+            <li id="05" class="bar "><a href="#">甜 点</a></li>
+            <li id="06" class="bar "><a href="#">饮料</a></li>
+            <li id="07" class="bar "><a href="#">小吃</a></li>
+        </ul>
+    </div>
+</div>
+<div id="contain">
+    <div class="filter">
+        <button class="btn text_btn ">默认</button>
+        <button class="text_btn btn ">推荐</button>
+        <button class="text_btn btn ">价格</button>
+        <button class="text_btn btn ">满减</button>
+    </div>
+    <div class="dish_list">
+        <ul>
+            <li value="">
+                <div class="dish">
+                    <div class="dish_img">
+                        <img src="../resource/img/dishes/_三文鱼刺身.jpg">
+                    </div>
+                    <div class="dish_inf">
+                        <div class="dish_inf_name">
+                            <p>三文鱼片</p>
+                        </div>
+                        <div class="dish_inf_money_and_recommand">
+                            <div class="dish_inf_money">
+                                <p>￥<span>23</span></p>
+                            </div>
+                            <div class="dish_inf_recommand">
+                                <p>这里是折扣信息</p>
+                                <!--<p>这里显示有多少颗星星</p>-->
+                            </div>
+                        </div>
+                        <div class="dish_inf_dec">
+                            <p>推荐指数：</p>
+                        </div>
+
+                    </div>
+                    <div class="dish_add_pb">
+                        <div class="pb_num ">
+                            <em class="dec">-</em>
+                            <input type="text" value="0" class="num" readonly="readonly"/>
+                            <em class="add">+</em>
+                        </div>
+                        <button class="com_btn addtoPB addtoPB_e">加入购物车</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dish">
+                    <div class="dish_img">
+                        <img src="../resource/img/dishes/_三文鱼刺身.jpg">
+                    </div>
+                    <div class="dish_inf">
+                        <div class="dish_inf_name">
+                            <p>三文鱼片</p>
+                        </div>
+                        <div class="dish_inf_money_and_recommand">
+                            <div class="dish_inf_money">
+                                <p>￥<span>23</span></p>
+                            </div>
+                            <div class="dish_inf_recommand">
+                                <span>显示星星</span>
+                                <span>5</span>
+                                <!--<p>这里显示有多少颗星星</p>-->
+                            </div>
+                        </div>
+                        <div class="dish_inf_dec">
+                            <p>这里是对菜品的描述</p>
+                        </div>
+                    </div>
+                    <div class="dish_add_pb">
+                        <div class="pb_num ">
+                            <em class="dec">-</em>
+                            <input type="text" value="0" class="num" />
+                            <em class="add">+</em>
+                        </div>
+                        <button class="com_btn addtoPB">加入购物车</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dish">
+                    <div class="dish_img">
+                        <img src="../resource/img/dishes/_三文鱼刺身.jpg">
+                    </div>
+                    <div class="dish_inf">
+                        <div class="dish_inf_name">
+                            <p>三文鱼片</p>
+                        </div>
+                        <div class="dish_inf_money_and_recommand">
+                            <div class="dish_inf_money">
+                                <p>￥<span>23</span></p>
+                            </div>
+                            <div class="dish_inf_recommand">
+                                <span>显示星星</span>
+                                <span>5</span>
+                                <!--<p>这里显示有多少颗星星</p>-->
+                            </div>
+                        </div>
+                        <div class="dish_inf_dec">
+                            <p>这里是对菜品的描述</p>
+                        </div>
+                    </div>
+                    <div class="dish_add_pb">
+                        <div class="pb_num ">
+                            <em class="dec">-</em>
+                            <input type="text" value="0" class="num" />
+                            <em class="add">+</em>
+                        </div>
+                        <button class="com_btn addtoPB">加入购物车</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dish">
+                    <div class="dish_img">
+                        <img src="../resource/img/dishes/_三文鱼刺身.jpg">
+                    </div>
+                    <div class="dish_inf">
+                        <div class="dish_inf_name">
+                            <p>三文鱼片</p>
+                        </div>
+                        <div class="dish_inf_money_and_recommand">
+                            <div class="dish_inf_money">
+                                <p>￥<span>23</span></p>
+                            </div>
+                            <div class="dish_inf_recommand">
+                                <span>显示星星</span>
+                                <span>5</span>
+                                <!--<p>这里显示有多少颗星星</p>-->
+                            </div>
+                        </div>
+                        <div class="dish_inf_dec">
+                            <p>这里是对菜品的描述</p>
+                        </div>
+                    </div>
+                    <div class="dish_add_pb">
+                        <div class="pb_num ">
+                            <em class="dec">-</em>
+                            <input type="text" value="0" class="num" />
+                            <em class="add">+</em>
+                        </div>
+                        <button class="com_btn addtoPB">加入购物车</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dish">
+                    <div class="dish_img">
+                        <img src="../resource/img/dishes/_三文鱼刺身.jpg">
+                    </div>
+                    <div class="dish_inf">
+                        <div class="dish_inf_name">
+                            <p>三文鱼片</p>
+                        </div>
+                        <div class="dish_inf_money_and_recommand">
+                            <div class="dish_inf_money">
+                                <p>￥<span>23</span></p>
+                            </div>
+                            <div class="dish_inf_recommand">
+                                <span>显示星星</span>
+                                <span>5</span>
+                                <!--<p>这里显示有多少颗星星</p>-->
+                            </div>
+                        </div>
+                        <div class="dish_inf_dec">
+                            <p>这里是对菜品的描述</p>
+                        </div>
+                    </div>
+                    <div class="dish_add_pb">
+                        <div class="pb_num ">
+                            <em class="dec">-</em>
+                            <input type="text" value="0" class="num" />
+                            <em class="add">+</em>
+                        </div>
+                        <button class="com_btn addtoPB">加入购物车</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dish">
+                    <div class="dish_img">
+                        <img src="../resource/img/dishes/_三文鱼刺身.jpg">
+                    </div>
+                    <div class="dish_inf">
+                        <div class="dish_inf_name">
+                            <p>三文鱼片</p>
+                        </div>
+                        <div class="dish_inf_money_and_recommand">
+                            <div class="dish_inf_money">
+                                <p>￥<span>23</span></p>
+                            </div>
+                            <div class="dish_inf_recommand">
+                                <span>显示星星</span>
+                                <span>5</span>
+                                <!--<p>这里显示有多少颗星星</p>-->
+                            </div>
+                        </div>
+                        <div class="dish_inf_dec">
+                            <p>这里是对菜品的描述</p>
+                        </div>
+                    </div>
+                    <div class="dish_add_pb">
+                        <div class="pb_num ">
+                            <em class="dec">-</em>
+                            <input type="text" value="0" class="num" />
+                            <em class="add">+</em>
+                        </div>
+                        <button class="com_btn addtoPB">加入购物车</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

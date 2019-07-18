@@ -1,0 +1,97 @@
+.login-page{
+    background-image: url("../img/login/login_bg.jpg");
+    background-size:cover;
+}
+
+.login-box{
+    width:400px;
+    margin:15% auto;
+}
+@media (max-width:768px){
+    .login-box{
+        width:90%;
+        margin-top:20px;
+    }
+}
+
+.login-box-body{
+    background:#fff;
+    padding:20px;
+    border-top:0;
+    color:#666;
+}
+
+.login-head-part{
+    text-align: center;
+}
+
+.login-logo{
+    font-size:20px;
+    text-align:center;
+    margin-left:15px;
+    margin-bottom:25px;
+    font-weight:300;
+}
+.login-logo a{
+    color:#444;
+}
+
+.login-doft-logo{
+    width:40px;
+    height: 40px;
+}
+
+.forget-password-text {
+    text-align: center;
+}
+
+.phone-login-text{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.radio-group{
+    margin-bottom:15px;
+}
+
+.text-smaller{
+    font-size: 12px;
+}
+
+.login-msg{
+    margin:0;
+    text-align:center;
+    padding:0 20px 20px 10px
+}
+
+.to-left{
+    margin-left: -20px;
+}
+
+.to-left-more{
+    margin-left: -60px;
+    /*width: 120px;*/
+}
+
+.left-part{
+    /*width: 50%;*/
+    /*float: right;*/
+    /*margin-right: 10px;*/
+}
+.right-part{
+    /*width: 30%;*/
+    float: right;
+    margin-right: 22px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指尖上的美味</title>
+    <link rel="stylesheet" href="../resource/css/bootstrap.min.css" >
+    <!--<link rel="stylesheet" href="../resource/css/jquery-ui.min.css"-->
+    <link rel="stylesheet" href="../css/common.css">
+    <!--<link rel="stylesheet" href="../css/dishes.css">-->
+    <link rel="stylesheet" href="../css/pb.css">
+    <!--<script type="text/javascript" src="../resource/js/jquery-ui.min.js"></script>-->
+    <script type="text/javascript" src="../resource/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../js/pb.js"></script>
+</head>
+<body onload="freshen()">
+<div id="left">
+    <div id="sideBar">
+        <ul class="nav  nav-stacked">
+            <li id="01" class="bar"><a href="#">日本菜</a></li>
+            <li id="02" class="bar"><a href="#">川 菜</a></li>
+            <li id="03" class="bar"><a href="#">家常菜</a></li>
+            <li id="04" class="bar"><a href="#">乡村菜</a></li>
+            <li id="05" class="bar"><a href="#">甜 点</a></li>
+            <li id="06" class="bar"><a href="#">饮料</a></li>
+            <li id="07" class="bar"><a href="#">小吃</a></li>
+        </ul>
+    </div>
+</div>
+<div id="contain">
+    <br/>
+    <br/>
+    <div class="dish_list">
+        <ul>
+            <li>
+                <div class="dish">
+                    <div class="dish_img">
+                        <img src="../resource/img/dishes/_三文鱼刺身.jpg">
+                    </div>
+                    <div class="dish_inf">
+                        <div class="dish_inf_name">
+                            <p>三文鱼片</p>
+                        </div>
+                        <div class="dish_inf_money_and_recommand">
+                            <div class="dish_inf_money">
+                                <p>￥<input type="text" value="23"  class="univalent"/></p>
+                            </div>
+                            <div class="dish_inf_recommand">
+                                <span>显示星星</span>
+                                <span>5</span>
+                                <!--<p>这里显示有多少颗星星</p>-->
+                            </div>
+                        </div>
+                        <div class="dish_inf_dec">
+                            <p>这里是对菜品的描述</p>
+                        </div>
+                    </div>
+                    <div class="dish_total_money">
+                        <p>￥<input style="width: 50px;" type="text" value="23"  class="t_price"/></p>
+                    </div>
+                    <div class="dish_add_pb">
+                        <div class="pb_num ">
+                            <em class="dec">-</em>
+                            <input style="padding-top: 3px; font-size: 16px;" type="text" value="1" class="num" />
+                            <em class="add">+</em>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dish">
+                    <div class="dish_img">
+                        <img src="../resource/img/dishes/_三文鱼刺身.jpg">
+                    </div>
+                    <div class="dish_inf">
+                        <div class="dish_inf_name">
+                            <p>三文鱼片</p>
+                        </div>
+                        <div class="dish_inf_money_and_recommand">
+                            <div class="dish_inf_money">
+                                <p>￥<input type="text" value="23"  class="univalent"/></p>
+                            </div>
+                            <div class="dish_inf_recommand">
+                                <span>显示星星</span>
+                                <span>5</span>
+                                <!--<p>这里显示有多少颗星星</p>-->
+                            </div>
+                        </div>
+                        <div class="dish_inf_dec">
+                            <p>这里是对菜品的描述</p>
+                        </div>
+                    </div>
+                    <div class="dish_total_money">
+                        <p>￥<input style="width: 50px;" type="text" value="23"  class="t_price"/></p>
+                    </div>
+                    <div class="dish_add_pb">
+                        <div class="pb_num ">
+                            <em class="dec">-</em>
+                            <input style="padding-top: 3px; font-size: 16px;" type="text" value="1" class="num" />
+                            <em class="add">+</em>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dish">
+                    <div class="dish_img">
+                        <img src="../resource/img/dishes/_三文鱼刺身.jpg">
+                    </div>
+                    <div class="dish_inf">
+                        <div class="dish_inf_name">
+                            <p>三文鱼片</p>
+                        </div>
+                        <div class="dish_inf_money_and_recommand">
+                            <div class="dish_inf_money">
+                                <p>￥<input type="text" value="23"  class="univalent"/></p>
+                            </div>
+                            <div class="dish_inf_recommand">
+                                <span>显示星星</span>
+                                <span>5</span>
+                                <!--<p>这里显示有多少颗星星</p>-->
+                            </div>
+                        </div>
+                        <div class="dish_inf_dec">
+                            <p>这里是对菜品的描述</p>
+                        </div>
+                    </div>
+                    <div class="dish_total_money">
+                        <p>￥<input style="width: 50px;" type="text" value="23"  class="t_price"/></p>
+                    </div>
+                    <div class="dish_add_pb">
+                        <div class="pb_num ">
+                            <em class="dec">-</em>
+                            <input style="padding-top: 3px; font-size: 16px;" type="text" value="1" class="num" />
+                            <em class="add">+</em>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="up_order">
+        <div class="set_time">
+            <div class="show_time">
+                <span>这里显示时间</span>
+            </div>
+            <div class="set_time_btn">
+                <button class=" btn mybtn">修改时间</button>
+            </div>
+        </div>
+        <div class="total_money">
+            <p>合计：<b style="font-size: 20px;">￥<input style="color: white;font-size: 20px; margin-bottom: 5px; width: 50px;" type="text" value="23" id="all_price"/></b></p>
+            <br>
+            <p style="margin-top: -15px ;">已优惠<input style="color: white; margin-bottom: 4px; font-size: 16px;" value="20" type="text" id="pre_price"/>元</p>
+        </div>
+        <div class="button_up">
+            <button class=" btn mybtn">提交订单</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

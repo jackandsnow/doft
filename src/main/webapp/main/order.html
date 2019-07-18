@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指尖上的美味</title>
+    <link rel="stylesheet" href="../resource/css/bootstrap.min.css" >
+    <!--<link rel="stylesheet" href="../resource/css/jquery-ui.min.css"-->
+    <link rel="stylesheet" href="../css/common.css">
+    <!-- 订单中心样式 -->
+    <link rel="stylesheet" href="../css/order.css">
+    <!-- 弹出框样式 -->
+    <link rel="stylesheet" href="../css/showBo.css">
+    <script type="text/javascript" src="../resource/js/jquery-ui.min.js"></script>
+    <!-- 弹出框js效果 -->
+    <script type="text/javascript" src="../js/showBo.js"></script>
+
+
+</head>
+<body>
+<div id="left">
+    <!-- 侧边栏 -->
+    <div id="sideBar">
+        <ul class="nav  nav-stacked">
+            <li id="01" class="bar"><a href="#">订单详情</a></li>
+            <li id="02" class="bar"><a href="./order_history.html">历史订单</a></li>
+        </ul>
+    </div>
+</div>
+<div id="contain">
+    <!-- 订单号 -->
+    <div class="order_title">
+        <div class="order_no_time">
+            <p  id="order_no_p">订单号: 000001</p>
+            <p  id="order_time_p">2018.03.10 12:04--2018.03.10 12:34</p>
+        </div>
+        <div class="order_status">
+            <p  id="order_status_p">已结账</p>
+        </div>
+    </div>
+    <!-- 菜品排序筛选器 -->
+    <div class="filter">
+        <div id="dish_btn">
+            <button class="text_btn btn"  >菜品</button>
+        </div>
+        <div id="price_btn">
+            <button class="text_btn btn">单价</button>
+        </div>
+        <div id="count_btn">
+            <button class="text_btn btn" >数量</button>
+        </div>
+        <div id="act_btn">
+            <button class="text_btn btn" >优惠活动</button>
+        </div>
+        <div id="totle_btn">
+            <button class="text_btn btn " >总价</button>
+        </div>
+
+    </div>
+    <!--菜单列表 -->
+    <div class="dish_list">
+        <ul>
+            <li>
+                <div class="dish">
+                    <div class="dish_info">
+                        <div class="dish_img">
+                            <img src="../resource/img/dishes/_三文鱼刺身.jpg">
+                        </div>
+                        <div class="dish_inf_name">
+                            <p>三文鱼片</p>
+                        </div>
+                    </div>
+                    <div class="dish_inf_money">
+                        <p>￥<span>23</span></p>
+                    </div>
+                    <div class="dish_count">
+                        <p>1</p>
+                    </div>
+                    <div class="dish_inf_act">
+                        <p>满减</p>
+                    </div>
+                    <div class="dish_totle_money">
+                        <p>23</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dish">
+                    <div class="dish_info">
+                        <div class="dish_img">
+                            <img src="../resource/img/dishes/_传统牛肉.jpg">
+                        </div>
+                        <div class="dish_inf_name">
+                            <p>传统牛肉</p>
+                        </div>
+                    </div>
+                    <div class="dish_inf_money">
+                        <p>￥<span>23</span></p>
+                    </div>
+                    <div class="dish_count">
+                        <p>1</p>
+                    </div>
+                    <div class="dish_inf_act">
+                        <p>满减</p>
+                    </div>
+                    <div class="dish_totle_money">
+                        <p>23</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dish">
+                    <div class="dish_info">
+                        <div class="dish_img">
+                            <img src="../resource/img/dishes/_刺身拼盘.jpg">
+                        </div>
+                        <div class="dish_inf_name">
+                            <p>刺身拼盘</p>
+                        </div>
+                    </div>
+                    <div class="dish_inf_money">
+                        <p>￥<span>23</span></p>
+                    </div>
+                    <div class="dish_count">
+                        <p>1</p>
+                    </div>
+                    <div class="dish_inf_act">
+                        <p>满减</p>
+                    </div>
+                    <div class="dish_totle_money">
+                        <p>23</p>
+                    </div>
+                </div>
+            </li>
+            <!-- 餐桌信息 -->
+            <li>
+                <div class="dish">
+                    <div class="dish_info">
+                        <div class="dish_img">
+                            <img src="../resource/img/dishes/_餐桌.png">
+                        </div>
+                        <div class="dish_inf_name">
+                            <p>餐桌</p>
+                        </div>
+                    </div>
+                    <div class="dish_inf_money">
+                        <p>￥<span>3</span></p>
+                    </div>
+                    <div class="dish_count">
+                        <p>5</p>
+                    </div>
+                    <div class="dish_inf_act">
+                    </div>
+                    <div class="dish_totle_money">
+                        <p>15</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- 总额 -->
+    <div class="all_totle_money">
+        <P class="money_inf" >合计: ￥<span>126</span></P>
+        <p class="discount_inf">已优惠<span>20</span>元</p>
+    </div>
+    <!-- 取消订单/加菜/去付款btn -->
+    <div class="filter all_function_btn">
+        <button class="btn function_btn1" >取消订单</button>
+        <button class="btn function_btn2">加菜</button>
+        <div class="box-163css" style="display: inline-block;">
+            <button class="btn function_btn3" onclick="Showbo.Msg.confirm('您将支付￥<span>126</span>元，确认支付吗？')" >去付款</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

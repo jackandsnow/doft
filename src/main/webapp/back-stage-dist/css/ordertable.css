@@ -1,0 +1,41 @@
+.login-doft-logo{
+    width:30px;
+    height: 30px;
+}
+
+.only-part{
+    /*width: 40%;*/
+    flex-direction: column;
+}
+
+.width-limit{
+    width: 120px;
+}
+
+.to-left{
+    margin-left: -20px;
+}
+
+.to-left-more{
+    margin-left: -60px;
+    /*width: 120px;*/
+}
+
+.width-block{
+    width: 10px;
+}
+.between-btns{
+    margin-right: 15px;
+}
+.img-litte{
+    width:20px;
+    height: 20px;
+}
+
+/*a  upload */
+.a-upload2 {
+    width:80px;height:30px;border:none;background-image: url('../img/btn/create-btn-icon.PNG')
+}
+.div-box{
+    margin-top: 20px;
+}

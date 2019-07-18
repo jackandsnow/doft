@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.clearfix {
+    overflow: auto;
+}
+body{
+    overflow:scroll;
+    /*overflow-y:hidden;*/
+}
+.All_news{
+    padding-top: 20px;
+}
+.All_news ul{
+    list-style: none;
+    margin:10px;
+}
+#sideBar a{
+    text-decoration: none;
+}
+.All_news{
+    min-height:600px;
+}
+.All_news .hintmsg{
+    font-size: 18px;
+    color: #fb9100;
+    text-align: center;
+    position: relative;
+    top: 280px;
+}
+.All_news ul li{
+    /* position: relative; */
+    background-color: #F1F1F0;
+    padding: 10px 20px 24px;
+    border-radius: 4px;
+    margin: 10px;
+}
+.All_news ul li p{
+    padding: 10px;
+}
+.All_news ul li p a{
+    color: #FB9100;
+}
+.All_news ul li .put_right{
+    float: right;
+}
+.All_news ul li .put_right .delete{
+    display: inline-block;
+}
+.All_news ul li .put_right .time{
+    font-size: 12px;
+    padding: 5px;
+}
+@media screen and (max-device-width: 640px) {
+    body{
+        font-size: 25px;
+    }
+    #left{
+        width: 100%;
+        min-height: 100px;
+        background-color: white;
+    }
+    .bar{
+        /*position: fixed;*/
+        display: inline-block;
+        float: left;
+        width: 49.5%;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        color: white;
+        font-size: 30px;
+        background-color: #F2F2F2;
+        margin-bottom: 4px;
+        /* border-top: solid 0.2px darkgray; */
+    }
+    .nav{
+        margin: 0 auto;
+    }
+    #contain{
+        margin-left: 0px;
+        width: 100%;
+        margin-top: 100px;
+        height: 94%;
+        padding-bottom: 15%;
+    }
+    #sideBar{
+        position: fixed;
+        width: 100%;
+        height: 100px;
+
+    }
+
+    #sideBar li a{
+        height: 100px;
+        padding-top: 0px;
+        text-decoration: none;
+    }
+    .page_wrapper{
+        margin-left: 29%;
+    }
+    .All_news ul li p{
+        font-size: 30px;
+    }
+    .All_news ul li .put_right .time{
+        font-size: 25px;
+    }
+    .All_news ul li{
+        height: 123px;
+    }
+    .All_news ul li .put_right .delete{
+        width: 30px;
+        margin-left: 8px;
+    }
+}

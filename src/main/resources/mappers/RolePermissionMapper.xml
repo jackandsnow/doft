@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doft.dao.RolePermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.doft.pojo.RolePermission" >
+    <constructor >
+      <idArg column="ROLE_ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ROLE_TYPE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ORDER_MANAGE_FLAG" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="USER_MANAGE_FLAG" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="INFO_MANAGE_FLAG" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="SYSTEM_MANAGE_FLAG" jdbcType="BIT" javaType="java.lang.Boolean" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ROLE_ID, ROLE_TYPE, ORDER_MANAGE_FLAG, USER_MANAGE_FLAG, INFO_MANAGE_FLAG, SYSTEM_MANAGE_FLAG
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doft.pojo.RolePermissionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_DOFT_ROLE_PERMISSIONS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_DOFT_ROLE_PERMISSIONS
+    where ROLE_ID = #{roleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_DOFT_ROLE_PERMISSIONS
+    where ROLE_ID = #{roleId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doft.pojo.RolePermissionExample" >
+    delete from T_DOFT_ROLE_PERMISSIONS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doft.pojo.RolePermission" >
+    insert into T_DOFT_ROLE_PERMISSIONS (ROLE_ID, ROLE_TYPE, ORDER_MANAGE_FLAG, 
+      USER_MANAGE_FLAG, INFO_MANAGE_FLAG, SYSTEM_MANAGE_FLAG
+      )
+    values (#{roleId,jdbcType=INTEGER}, #{roleType,jdbcType=VARCHAR}, #{orderManageFlag,jdbcType=BIT}, 
+      #{userManageFlag,jdbcType=BIT}, #{infoManageFlag,jdbcType=BIT}, #{systemManageFlag,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.doft.pojo.RolePermission" >
+    insert into T_DOFT_ROLE_PERMISSIONS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="roleType != null" >
+        ROLE_TYPE,
+      </if>
+      <if test="orderManageFlag != null" >
+        ORDER_MANAGE_FLAG,
+      </if>
+      <if test="userManageFlag != null" >
+        USER_MANAGE_FLAG,
+      </if>
+      <if test="infoManageFlag != null" >
+        INFO_MANAGE_FLAG,
+      </if>
+      <if test="systemManageFlag != null" >
+        SYSTEM_MANAGE_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="roleType != null" >
+        #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderManageFlag != null" >
+        #{orderManageFlag,jdbcType=BIT},
+      </if>
+      <if test="userManageFlag != null" >
+        #{userManageFlag,jdbcType=BIT},
+      </if>
+      <if test="infoManageFlag != null" >
+        #{infoManageFlag,jdbcType=BIT},
+      </if>
+      <if test="systemManageFlag != null" >
+        #{systemManageFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doft.pojo.RolePermissionExample" resultType="java.lang.Integer" >
+    select count(*) from T_DOFT_ROLE_PERMISSIONS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_DOFT_ROLE_PERMISSIONS
+    <set >
+      <if test="record.roleId != null" >
+        ROLE_ID = #{record.roleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.roleType != null" >
+        ROLE_TYPE = #{record.roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderManageFlag != null" >
+        ORDER_MANAGE_FLAG = #{record.orderManageFlag,jdbcType=BIT},
+      </if>
+      <if test="record.userManageFlag != null" >
+        USER_MANAGE_FLAG = #{record.userManageFlag,jdbcType=BIT},
+      </if>
+      <if test="record.infoManageFlag != null" >
+        INFO_MANAGE_FLAG = #{record.infoManageFlag,jdbcType=BIT},
+      </if>
+      <if test="record.systemManageFlag != null" >
+        SYSTEM_MANAGE_FLAG = #{record.systemManageFlag,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_DOFT_ROLE_PERMISSIONS
+    set ROLE_ID = #{record.roleId,jdbcType=INTEGER},
+      ROLE_TYPE = #{record.roleType,jdbcType=VARCHAR},
+      ORDER_MANAGE_FLAG = #{record.orderManageFlag,jdbcType=BIT},
+      USER_MANAGE_FLAG = #{record.userManageFlag,jdbcType=BIT},
+      INFO_MANAGE_FLAG = #{record.infoManageFlag,jdbcType=BIT},
+      SYSTEM_MANAGE_FLAG = #{record.systemManageFlag,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doft.pojo.RolePermission" >
+    update T_DOFT_ROLE_PERMISSIONS
+    <set >
+      <if test="roleType != null" >
+        ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderManageFlag != null" >
+        ORDER_MANAGE_FLAG = #{orderManageFlag,jdbcType=BIT},
+      </if>
+      <if test="userManageFlag != null" >
+        USER_MANAGE_FLAG = #{userManageFlag,jdbcType=BIT},
+      </if>
+      <if test="infoManageFlag != null" >
+        INFO_MANAGE_FLAG = #{infoManageFlag,jdbcType=BIT},
+      </if>
+      <if test="systemManageFlag != null" >
+        SYSTEM_MANAGE_FLAG = #{systemManageFlag,jdbcType=BIT},
+      </if>
+    </set>
+    where ROLE_ID = #{roleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doft.pojo.RolePermission" >
+    update T_DOFT_ROLE_PERMISSIONS
+    set ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      ORDER_MANAGE_FLAG = #{orderManageFlag,jdbcType=BIT},
+      USER_MANAGE_FLAG = #{userManageFlag,jdbcType=BIT},
+      INFO_MANAGE_FLAG = #{infoManageFlag,jdbcType=BIT},
+      SYSTEM_MANAGE_FLAG = #{systemManageFlag,jdbcType=BIT}
+    where ROLE_ID = #{roleId,jdbcType=INTEGER}
+  </update>
+</mapper>

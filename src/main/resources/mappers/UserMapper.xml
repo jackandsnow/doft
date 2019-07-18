@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doft.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.doft.pojo.User">
+    <constructor>
+      <idArg column="USER_ID" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="USER_NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PASSWORD" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="HEAD_URL" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="PHONE_NUMBER" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="REMAINING_MONEY" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="ROLE_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="IS_DELETED_FLAG" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="CREATION_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="CREATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="LAST_UPDATED_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="LAST_UPDATED_BY" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="QUESTION" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ANSWER" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    USER_ID, USER_NAME, PASSWORD, HEAD_URL, PHONE_NUMBER, REMAINING_MONEY, ROLE_ID, IS_DELETED_FLAG, 
+    CREATION_TIME, CREATED_BY, LAST_UPDATED_TIME, LAST_UPDATED_BY, QUESTION, ANSWER
+  </sql>
+  <select id="selectByExample" parameterType="com.doft.pojo.UserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_DOFT_USERS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_DOFT_USERS
+    where USER_ID = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from T_DOFT_USERS
+    where USER_ID = #{userId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doft.pojo.UserExample">
+    delete from T_DOFT_USERS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doft.pojo.User">
+    insert into T_DOFT_USERS (USER_ID, USER_NAME, PASSWORD, 
+      HEAD_URL, PHONE_NUMBER, REMAINING_MONEY, 
+      ROLE_ID, IS_DELETED_FLAG, CREATION_TIME, 
+      CREATED_BY, LAST_UPDATED_TIME, LAST_UPDATED_BY, 
+      QUESTION, ANSWER)
+    values (#{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{headUrl,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, #{remainingMoney,jdbcType=DECIMAL}, 
+      #{roleId,jdbcType=INTEGER}, #{isDeletedFlag,jdbcType=BIT}, now(),
+      #{createdBy,jdbcType=VARCHAR}, now(), #{lastUpdatedBy,jdbcType=VARCHAR},
+      #{question,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doft.pojo.User">
+    insert into T_DOFT_USERS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="userName != null">
+        USER_NAME,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="headUrl != null">
+        HEAD_URL,
+      </if>
+      <if test="phoneNumber != null">
+        PHONE_NUMBER,
+      </if>
+      <if test="remainingMoney != null">
+        REMAINING_MONEY,
+      </if>
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+      <if test="isDeletedFlag != null">
+        IS_DELETED_FLAG,
+      </if>
+      <if test="creationTime != null">
+        CREATION_TIME,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="lastUpdatedTime != null">
+        LAST_UPDATED_TIME,
+      </if>
+      <if test="lastUpdatedBy != null">
+        LAST_UPDATED_BY,
+      </if>
+      <if test="question != null">
+        QUESTION,
+      </if>
+      <if test="answer != null">
+        ANSWER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="headUrl != null">
+        #{headUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="remainingMoney != null">
+        #{remainingMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="isDeletedFlag != null">
+        #{isDeletedFlag,jdbcType=BIT},
+      </if>
+      <if test="creationTime != null">
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedTime != null">
+        #{lastUpdatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdatedBy != null">
+        #{lastUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null">
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doft.pojo.UserExample" resultType="java.lang.Integer">
+    select count(*) from T_DOFT_USERS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update T_DOFT_USERS
+    <set>
+      <if test="record.userId != null">
+        USER_ID = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userName != null">
+        USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        PASSWORD = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.headUrl != null">
+        HEAD_URL = #{record.headUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneNumber != null">
+        PHONE_NUMBER = #{record.phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remainingMoney != null">
+        REMAINING_MONEY = #{record.remainingMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.roleId != null">
+        ROLE_ID = #{record.roleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDeletedFlag != null">
+        IS_DELETED_FLAG = #{record.isDeletedFlag,jdbcType=BIT},
+      </if>
+      <if test="record.creationTime != null">
+        CREATION_TIME = #{record.creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdBy != null">
+        CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastUpdatedTime != null">
+        LAST_UPDATED_TIME = #{record.lastUpdatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastUpdatedBy != null">
+        LAST_UPDATED_BY = #{record.lastUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.question != null">
+        QUESTION = #{record.question,jdbcType=VARCHAR},
+      </if>
+      <if test="record.answer != null">
+        ANSWER = #{record.answer,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update T_DOFT_USERS
+    set USER_ID = #{record.userId,jdbcType=BIGINT},
+      USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      PASSWORD = #{record.password,jdbcType=VARCHAR},
+      HEAD_URL = #{record.headUrl,jdbcType=VARCHAR},
+      PHONE_NUMBER = #{record.phoneNumber,jdbcType=VARCHAR},
+      REMAINING_MONEY = #{record.remainingMoney,jdbcType=DECIMAL},
+      ROLE_ID = #{record.roleId,jdbcType=INTEGER},
+      IS_DELETED_FLAG = #{record.isDeletedFlag,jdbcType=BIT},
+      CREATION_TIME = #{record.creationTime,jdbcType=TIMESTAMP},
+      CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      LAST_UPDATED_TIME = #{record.lastUpdatedTime,jdbcType=TIMESTAMP},
+      LAST_UPDATED_BY = #{record.lastUpdatedBy,jdbcType=VARCHAR},
+      QUESTION = #{record.question,jdbcType=VARCHAR},
+      ANSWER = #{record.answer,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doft.pojo.User">
+    update T_DOFT_USERS
+    <set>
+      <if test="userName != null">
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="headUrl != null">
+        HEAD_URL = #{headUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="remainingMoney != null">
+        REMAINING_MONEY = #{remainingMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="roleId != null">
+        ROLE_ID = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="isDeletedFlag != null">
+        IS_DELETED_FLAG = #{isDeletedFlag,jdbcType=BIT},
+      </if>
+      <if test="creationTime != null">
+        CREATION_TIME = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedTime != null">
+        LAST_UPDATED_TIME = #{lastUpdatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdatedBy != null">
+        LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null">
+        QUESTION = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        ANSWER = #{answer,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doft.pojo.User">
+    update T_DOFT_USERS
+    set USER_NAME = #{userName,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      HEAD_URL = #{headUrl,jdbcType=VARCHAR},
+      PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      REMAINING_MONEY = #{remainingMoney,jdbcType=DECIMAL},
+      ROLE_ID = #{roleId,jdbcType=INTEGER},
+      IS_DELETED_FLAG = #{isDeletedFlag,jdbcType=BIT},
+      CREATION_TIME = #{creationTime,jdbcType=TIMESTAMP},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      LAST_UPDATED_TIME = #{lastUpdatedTime,jdbcType=TIMESTAMP},
+      LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType=VARCHAR},
+      QUESTION = #{question,jdbcType=VARCHAR},
+      ANSWER = #{answer,jdbcType=VARCHAR}
+    where USER_ID = #{userId,jdbcType=BIGINT}
+  </update>
+
+  <select id="checkUsername" parameterType="String" resultType="int">SELECT COUNT(1) FROM T_DOFT_USERS WHERE USER_NAME = #{username}</select>
+
+  <select id="checkPhoneNumber" parameterType="String" resultType="int">SELECT COUNT(1) FROM T_DOFT_USERS WHERE PHONE_NUMBER = #{phoneNumber}</select>
+
+  <select id="selectLoginByPhoneNumber" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM T_DOFT_USERS
+    WHERE PHONE_NUMBER = #{phoneNumber} AND PASSWORD = #{password}
+  </select>
+
+  <select id="selectLoginByUsername" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM T_DOFT_USERS
+    WHERE USER_NAME = #{userName} AND PASSWORD = #{password}
+  </select>
+
+  <select id="selectQuestionByUsername" parameterType="string" resultType="string">
+    SELECT QUESTION FROM T_DOFT_USERS
+    WHERE USER_NAME = #{username}
+  </select>
+
+  <select id="checkAnswer" parameterType="map" resultType="int">
+    SELECT COUNT(1)
+    FROM T_DOFT_USERS
+    WHERE USER_NAME = #{username}
+    AND QUESTION = #{question}
+    AND ANSWER = #{anwser}
+  </select>
+
+  <update id="updatePasswordByUsername" parameterType="map">
+    UPDATE T_DOFT_USERS
+    SET PASSWORD = #{passwordNew},LAST_UPDATED_TIME = now()
+    WHERE USER_NAME = #{username}
+  </update>
+
+  <select id="checkPassword" parameterType="map" resultType="int">
+    SELECT COUNT(1)
+    FROM T_DOFT_USERS
+    WHERE USER_ID = #{userId}
+    AND PASSWORD = #{password}
+
+  </select>
+
+  <select id="checkPhoneNumberByUserId" parameterType="map" resultType="int">
+    SELECT COUNT(1)
+    FROM T_DOFT_USERS
+    WHERE PHONE_NUMBER = #{phoneNumber}
+    AND USER_ID != #{userId}
+  </select>
+
+  <select id="selectAllCommonUsers" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM T_DOFT_USERS
+    WHERE ROLE_ID = 0 AND IS_DELETED_FLAG = FALSE
+    ORDER BY USER_ID ASC
+  </select>
+
+  <select id="selectAllAdministrators" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM T_DOFT_USERS
+    WHERE ROLE_ID != 0 AND IS_DELETED_FLAG = FALSE
+    ORDER BY USER_ID ASC
+  </select>
+
+  <select id="countByCreatedTime" parameterType="map" resultType="java.lang.Long">
+    SELECT COUNT(1)
+    FROM T_DOFT_USERS
+    WHERE CREATION_TIME BETWEEN #{begin} AND #{end}
+  </select>
+
+</mapper>

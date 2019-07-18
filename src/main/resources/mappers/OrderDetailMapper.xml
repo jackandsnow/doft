@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doft.dao.OrderDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.doft.pojo.OrderDetail" >
+    <constructor >
+      <idArg column="ORDER_DETAIL_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="ORDER_NO" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="DISH_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="DISH_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DISH_COUNT" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="IS_ADDED_DISH_FLAG" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="USER_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="CURRENT_UNIT_PRICE" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="TOTAL_PRICE" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="CREATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="UPDATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ORDER_DETAIL_ID, ORDER_NO, DISH_ID, DISH_NAME, DISH_COUNT, IS_ADDED_DISH_FLAG, USER_ID, 
+    CURRENT_UNIT_PRICE, TOTAL_PRICE, CREATE_TIME, UPDATE_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doft.pojo.OrderDetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_DOFT_ORDER_DETAILS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_DOFT_ORDER_DETAILS
+    where ORDER_DETAIL_ID = #{orderDetailId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from T_DOFT_ORDER_DETAILS
+    where ORDER_DETAIL_ID = #{orderDetailId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doft.pojo.OrderDetailExample" >
+    delete from T_DOFT_ORDER_DETAILS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doft.pojo.OrderDetail" >
+    insert into T_DOFT_ORDER_DETAILS (ORDER_DETAIL_ID, ORDER_NO, DISH_ID, 
+      DISH_NAME, DISH_COUNT, IS_ADDED_DISH_FLAG, 
+      USER_ID, CURRENT_UNIT_PRICE, TOTAL_PRICE, 
+      CREATE_TIME, UPDATE_TIME)
+    values (#{orderDetailId,jdbcType=BIGINT}, #{orderNo,jdbcType=CHAR}, #{dishId,jdbcType=BIGINT}, 
+      #{dishName,jdbcType=VARCHAR}, #{dishCount,jdbcType=INTEGER}, #{isAddedDishFlag,jdbcType=BIT}, 
+      #{userId,jdbcType=BIGINT}, #{currentUnitPrice,jdbcType=DECIMAL}, #{totalPrice,jdbcType=DECIMAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doft.pojo.OrderDetail" >
+    insert into T_DOFT_ORDER_DETAILS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderDetailId != null" >
+        ORDER_DETAIL_ID,
+      </if>
+      <if test="orderNo != null" >
+        ORDER_NO,
+      </if>
+      <if test="dishId != null" >
+        DISH_ID,
+      </if>
+      <if test="dishName != null" >
+        DISH_NAME,
+      </if>
+      <if test="dishCount != null" >
+        DISH_COUNT,
+      </if>
+      <if test="isAddedDishFlag != null" >
+        IS_ADDED_DISH_FLAG,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="currentUnitPrice != null" >
+        CURRENT_UNIT_PRICE,
+      </if>
+      <if test="totalPrice != null" >
+        TOTAL_PRICE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderDetailId != null" >
+        #{orderDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=CHAR},
+      </if>
+      <if test="dishId != null" >
+        #{dishId,jdbcType=BIGINT},
+      </if>
+      <if test="dishName != null" >
+        #{dishName,jdbcType=VARCHAR},
+      </if>
+      <if test="dishCount != null" >
+        #{dishCount,jdbcType=INTEGER},
+      </if>
+      <if test="isAddedDishFlag != null" >
+        #{isAddedDishFlag,jdbcType=BIT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="currentUnitPrice != null" >
+        #{currentUnitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="totalPrice != null" >
+        #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doft.pojo.OrderDetailExample" resultType="java.lang.Integer" >
+    select count(*) from T_DOFT_ORDER_DETAILS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_DOFT_ORDER_DETAILS
+    <set >
+      <if test="record.orderDetailId != null" >
+        ORDER_DETAIL_ID = #{record.orderDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderNo != null" >
+        ORDER_NO = #{record.orderNo,jdbcType=CHAR},
+      </if>
+      <if test="record.dishId != null" >
+        DISH_ID = #{record.dishId,jdbcType=BIGINT},
+      </if>
+      <if test="record.dishName != null" >
+        DISH_NAME = #{record.dishName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dishCount != null" >
+        DISH_COUNT = #{record.dishCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.isAddedDishFlag != null" >
+        IS_ADDED_DISH_FLAG = #{record.isAddedDishFlag,jdbcType=BIT},
+      </if>
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.currentUnitPrice != null" >
+        CURRENT_UNIT_PRICE = #{record.currentUnitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.totalPrice != null" >
+        TOTAL_PRICE = #{record.totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_DOFT_ORDER_DETAILS
+    set ORDER_DETAIL_ID = #{record.orderDetailId,jdbcType=BIGINT},
+      ORDER_NO = #{record.orderNo,jdbcType=CHAR},
+      DISH_ID = #{record.dishId,jdbcType=BIGINT},
+      DISH_NAME = #{record.dishName,jdbcType=VARCHAR},
+      DISH_COUNT = #{record.dishCount,jdbcType=INTEGER},
+      IS_ADDED_DISH_FLAG = #{record.isAddedDishFlag,jdbcType=BIT},
+      USER_ID = #{record.userId,jdbcType=BIGINT},
+      CURRENT_UNIT_PRICE = #{record.currentUnitPrice,jdbcType=DECIMAL},
+      TOTAL_PRICE = #{record.totalPrice,jdbcType=DECIMAL},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doft.pojo.OrderDetail" >
+    update T_DOFT_ORDER_DETAILS
+    <set >
+      <if test="orderNo != null" >
+        ORDER_NO = #{orderNo,jdbcType=CHAR},
+      </if>
+      <if test="dishId != null" >
+        DISH_ID = #{dishId,jdbcType=BIGINT},
+      </if>
+      <if test="dishName != null" >
+        DISH_NAME = #{dishName,jdbcType=VARCHAR},
+      </if>
+      <if test="dishCount != null" >
+        DISH_COUNT = #{dishCount,jdbcType=INTEGER},
+      </if>
+      <if test="isAddedDishFlag != null" >
+        IS_ADDED_DISH_FLAG = #{isAddedDishFlag,jdbcType=BIT},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="currentUnitPrice != null" >
+        CURRENT_UNIT_PRICE = #{currentUnitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="totalPrice != null" >
+        TOTAL_PRICE = #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ORDER_DETAIL_ID = #{orderDetailId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doft.pojo.OrderDetail" >
+    update T_DOFT_ORDER_DETAILS
+    set ORDER_NO = #{orderNo,jdbcType=CHAR},
+      DISH_ID = #{dishId,jdbcType=BIGINT},
+      DISH_NAME = #{dishName,jdbcType=VARCHAR},
+      DISH_COUNT = #{dishCount,jdbcType=INTEGER},
+      IS_ADDED_DISH_FLAG = #{isAddedDishFlag,jdbcType=BIT},
+      USER_ID = #{userId,jdbcType=BIGINT},
+      CURRENT_UNIT_PRICE = #{currentUnitPrice,jdbcType=DECIMAL},
+      TOTAL_PRICE = #{totalPrice,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where ORDER_DETAIL_ID = #{orderDetailId,jdbcType=BIGINT}
+  </update>
+
+  <select id="getByOrderNoUserId" resultMap="BaseResultMap" parameterType="map">
+
+    SELECT <include refid="Base_Column_List"/>
+    FROM T_DOFT_ORDER_DETAILS
+    WHERE ORDER_NO = #{orderNo}
+    AND USER_ID = #{userId}
+  </select>
+
+  <select id="getByUserId" resultMap="BaseResultMap" parameterType="Long">
+    SELECT <include refid="Base_Column_List"/>
+    FROM T_DOFT_ORDER_DETAILS
+    WHERE USER_ID = #{userId}
+    ORDER BY CREATE_TIME DESC
+  </select>
+
+  <select id="getByOrderNo" resultMap="BaseResultMap" parameterType="String">
+
+    SELECT <include refid="Base_Column_List"/>
+    FROM T_DOFT_ORDER_DETAILS
+    WHERE ORDER_NO = #{orderNo}
+  </select>
+
+  <insert id="batchInsert" parameterType="list">
+     insert into T_DOFT_ORDER_DETAILS (ORDER_DETAIL_ID, ORDER_NO, DISH_ID,
+      DISH_NAME, DISH_COUNT, IS_ADDED_DISH_FLAG,
+      USER_ID, CURRENT_UNIT_PRICE, TOTAL_PRICE,
+      CREATE_TIME, UPDATE_TIME)
+    values
+    <foreach collection="orderDetailList" index="index" item="item" separator=",">
+      (
+      #{item.orderDetailId},#{item.orderNo}, #{item.dishId},
+      #{item.dishName}, #{item.dishCount}, #{item.isAddedDishFlag},
+      #{item.userId}, #{item.currentUnitPrice}, #{item.totalPrice},
+      now(), now()
+      )
+    </foreach>
+  </insert>
+
+</mapper>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doft.dao.CartMapper" >
+  <resultMap id="BaseResultMap" type="com.doft.pojo.Cart" >
+    <constructor >
+      <idArg column="ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="USER_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="DISH_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="QUANTITES" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CHECKED" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CREATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATE_BY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="UPDATE_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="UPDATE_BY" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USER_ID, DISH_ID, QUANTITES, CHECKED, CREATE_TIME, CREATE_BY, UPDATE_TIME, UPDATE_BY
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_DOFT_CART
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from T_DOFT_CART
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.doft.pojo.Cart" >
+    insert into T_DOFT_CART (ID, USER_ID, DISH_ID, 
+      QUANTITES, CHECKED, CREATE_TIME, 
+      CREATE_BY, UPDATE_TIME, UPDATE_BY
+      )
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{dishId,jdbcType=BIGINT}, 
+      #{quantites,jdbcType=INTEGER}, #{checked,jdbcType=INTEGER}, now(),
+      #{createBy,jdbcType=VARCHAR}, now(), #{updateBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.doft.pojo.Cart" >
+    insert into T_DOFT_CART
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="dishId != null" >
+        DISH_ID,
+      </if>
+      <if test="quantites != null" >
+        QUANTITES,
+      </if>
+      <if test="checked != null" >
+        CHECKED,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="createBy != null" >
+        CREATE_BY,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateBy != null" >
+        UPDATE_BY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="dishId != null" >
+        #{dishId,jdbcType=BIGINT},
+      </if>
+      <if test="quantites != null" >
+        #{quantites,jdbcType=INTEGER},
+      </if>
+      <if test="checked != null" >
+        #{checked,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doft.pojo.Cart" >
+    update T_DOFT_CART
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="dishId != null" >
+        DISH_ID = #{dishId,jdbcType=BIGINT},
+      </if>
+      <if test="quantites != null" >
+        QUANTITES = #{quantites,jdbcType=INTEGER},
+      </if>
+      <if test="checked != null" >
+        CHECKED = #{checked,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = now(),
+      </if>
+      <if test="updateBy != null" >
+        UPDATE_BY = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doft.pojo.Cart" >
+    update T_DOFT_CART
+    set USER_ID = #{userId,jdbcType=BIGINT},
+      DISH_ID = #{dishId,jdbcType=BIGINT},
+      QUANTITES = #{quantites,jdbcType=INTEGER},
+      CHECKED = #{checked,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_BY = #{updateBy,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+
+    <select id="selectCartByUserIdDishId" resultMap="BaseResultMap" parameterType="map">
+
+      SELECT
+      <include refid="Base_Column_List"/>
+        FROM T_DOFT_CART
+        WHERE USER_ID = #{userId}
+        AND DISH_ID = #{dishId}
+    </select>
+    <select id="selectCartByUserId" resultMap="BaseResultMap" parameterType="Long">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM T_DOFT_CART
+        WHERE USER_ID = #{userId}
+
+    </select>
+
+
+  <select id="selectCartDishCheckedStatusByUserId" resultType="int" parameterType="Long">
+    SELECT COUNT(1)
+    FROM T_DOFT_CART
+    WHERE CHECKED = 0
+    AND USER_ID = #{userId}
+  </select>
+
+  <delete id="deleteByUserIdDishIds" parameterType="map">
+    DELETE FROM T_DOFT_CART
+    WHERE USER_ID = #{userId}
+    <if test="dishIds != null">
+      AND DISH_ID IN
+      <foreach collection="dishIds" item="item" index="index" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+  </delete>
+
+  <update id="checkedOrUnCheckedDish" parameterType="map">
+    UPDATE T_DOFT_CART
+    SET CHECKED = #{checked},
+    UPDATE_TIME = now()
+    WHERE USER_ID = #{userId}
+    <if test="dishId != null ">
+      and DISH_ID = #{dishId}
+    </if>
+  </update>
+  <select id="selectCartDishCount" parameterType="Long" resultType="int">
+    SELECT NULLIF(sum(QUANTITES),0) as COUNT
+    FROM T_DOFT_CART
+    WHERE USER_ID = #{userId}
+  </select>
+  <select id="selectCheckCartByUserId" parameterType="Long" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM T_DOFT_CART
+    WHERE USER_ID = #{userId}
+    AND CHECKED = 1
+  </select>
+</mapper>

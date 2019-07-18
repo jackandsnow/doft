@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doft.dao.DeskMapper" >
+  <resultMap id="BaseResultMap" type="com.doft.pojo.Desk" >
+    <constructor >
+      <idArg column="DESK_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="DESK_STATUS" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="IS_VALID_FLAG" jdbcType="BIT" javaType="java.lang.Boolean" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DESK_ID, DESK_STATUS, IS_VALID_FLAG
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doft.pojo.DeskExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_DOFT_DESKS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from T_DOFT_DESKS
+    where DESK_ID = #{deskId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from T_DOFT_DESKS
+    where DESK_ID = #{deskId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doft.pojo.DeskExample" >
+    delete from T_DOFT_DESKS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doft.pojo.Desk" >
+    insert into T_DOFT_DESKS (DESK_ID, DESK_STATUS, IS_VALID_FLAG
+    )
+    values (#{deskId,jdbcType=BIGINT}, #{deskStatus,jdbcType=INTEGER}, #{isValidFlag,jdbcType=BIT}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.doft.pojo.Desk" >
+    insert into T_DOFT_DESKS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deskId != null" >
+        DESK_ID,
+      </if>
+      <if test="deskStatus != null" >
+        DESK_STATUS,
+      </if>
+      <if test="isValidFlag != null" >
+        IS_VALID_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deskId != null" >
+        #{deskId,jdbcType=BIGINT},
+      </if>
+      <if test="deskStatus != null" >
+        #{deskStatus,jdbcType=INTEGER},
+      </if>
+      <if test="isValidFlag != null" >
+        #{isValidFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doft.pojo.DeskExample" resultType="java.lang.Integer" >
+    select count(*) from T_DOFT_DESKS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_DOFT_DESKS
+    <set >
+      <if test="record.deskId != null" >
+        DESK_ID = #{record.deskId,jdbcType=BIGINT},
+      </if>
+      <if test="record.deskStatus != null" >
+        DESK_STATUS = #{record.deskStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.isValidFlag != null" >
+        IS_VALID_FLAG = #{record.isValidFlag,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_DOFT_DESKS
+    set DESK_ID = #{record.deskId,jdbcType=BIGINT},
+    DESK_STATUS = #{record.deskStatus,jdbcType=INTEGER},
+    IS_VALID_FLAG = #{record.isValidFlag,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doft.pojo.Desk" >
+    update T_DOFT_DESKS
+    <set >
+      <if test="deskStatus != null" >
+        DESK_STATUS = #{deskStatus,jdbcType=INTEGER},
+      </if>
+      <if test="isValidFlag != null" >
+        IS_VALID_FLAG = #{isValidFlag,jdbcType=BIT},
+      </if>
+    </set>
+    where DESK_ID = #{deskId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doft.pojo.Desk" >
+    update T_DOFT_DESKS
+    set DESK_STATUS = #{deskStatus,jdbcType=INTEGER},
+    IS_VALID_FLAG = #{isValidFlag,jdbcType=BIT}
+    where DESK_ID = #{deskId,jdbcType=BIGINT}
+  </update>
+
+  <select id="getDeskListByValidFlag" resultMap="BaseResultMap" parameterType="java.lang.Boolean" >
+    select
+    <include refid="Base_Column_List" />
+    from T_DOFT_DESKS
+    where IS_VALID_FLAG = #{flag}
+  </select>
+
+  <select id="getDeskListTrueValidFlagAndFree" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from T_DOFT_DESKS
+    where IS_VALID_FLAG = TRUE
+    and DESK_STATUS = 0
+  </select>
+
+  <select id="getFreeDeskIdList" resultType="java.lang.Long" >
+    select DESK_ID
+    from T_DOFT_DESKS
+    where IS_VALID_FLAG = TRUE  /* valid desk */
+    and DESK_STATUS = 0   /* free desk */
+  </select>
+
+  <select id="selectByDeskStatus" resultType="java.lang.Long" parameterType="java.lang.Integer" >
+    select COUNT(*)
+    from T_DOFT_DESKS
+    where IS_VALID_FLAG = TRUE  /* valid desk */
+    and DESK_STATUS = #{status}
+  </select>
+
+</mapper>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doft.dao.DishMapper" >
+  <resultMap id="BaseResultMap" type="com.doft.pojo.Dish" >
+    <constructor >
+      <idArg column="DISH_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="DISH_NAME" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DISH_TYPE_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="DISH_IMG_URL" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PRICE" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="TOTAL_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="STATUS" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="IS_BARGAIN_FLAG" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="CREATION_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATED_BY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LAST_UPDATED_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="LAST_UPDATED_BY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RECOMMEND_INDEX" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="DESCRIPTION" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DISH_ID, DISH_NAME, DISH_TYPE_ID, DISH_IMG_URL, PRICE, TOTAL_NUMBER, STATUS, IS_BARGAIN_FLAG, 
+    CREATION_TIME, CREATED_BY, LAST_UPDATED_TIME, LAST_UPDATED_BY, RECOMMEND_INDEX, DESCRIPTION
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_DOFT_DISHES
+    where DISH_ID = #{dishId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from T_DOFT_DISHES
+    where DISH_ID = #{dishId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.doft.pojo.Dish" >
+    insert into T_DOFT_DISHES (DISH_ID, DISH_NAME, DISH_TYPE_ID,
+      DISH_IMG_URL, PRICE, TOTAL_NUMBER, 
+      STATUS, IS_BARGAIN_FLAG, CREATION_TIME, 
+      CREATED_BY, LAST_UPDATED_TIME, LAST_UPDATED_BY, 
+      RECOMMEND_INDEX, DESCRIPTION)
+    values (#{dishId,jdbcType=BIGINT}, #{dishName,jdbcType=VARCHAR}, #{dishTypeId,jdbcType=BIGINT},
+      #{dishImgUrl,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{totalNumber,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{isBargainFlag,jdbcType=BIT}, now(),
+      #{createdBy,jdbcType=VARCHAR}, now(),#{lastUpdatedBy},
+      #{recommendIndex,jdbcType=REAL}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doft.pojo.Dish" >
+    insert into T_DOFT_DISHES
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dishId != null" >
+        DISH_ID,
+      </if>
+      <if test="dishName != null" >
+        DISH_NAME,
+      </if>
+      <if test="dishTypeId != null" >
+        DISH_TYPE_ID,
+      </if>
+      <if test="dishImgUrl != null" >
+        DISH_IMG_URL,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="totalNumber != null" >
+        TOTAL_NUMBER,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="isBargainFlag != null" >
+        IS_BARGAIN_FLAG,
+      </if>
+      <if test="creationTime != null" >
+        CREATION_TIME,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="lastUpdatedTime != null" >
+        LAST_UPDATED_TIME,
+      </if>
+      <if test="lastUpdatedBy != null" >
+        LAST_UPDATED_BY,
+      </if>
+      <if test="recommendIndex != null" >
+        RECOMMEND_INDEX,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dishId != null" >
+        #{dishId,jdbcType=BIGINT},
+      </if>
+      <if test="dishName != null" >
+        #{dishName,jdbcType=VARCHAR},
+      </if>
+      <if test="dishTypeId != null" >
+        #{dishTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="dishImgUrl != null" >
+        #{dishImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="totalNumber != null" >
+        #{totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isBargainFlag != null" >
+        #{isBargainFlag,jdbcType=BIT},
+      </if>
+      now(),
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      now(),
+      <if test="lastUpdatedBy != null" >
+        #{lastUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendIndex != null" >
+        #{recommendIndex,jdbcType=REAL},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doft.pojo.Dish" >
+    update T_DOFT_DISHES
+    <set >
+      <if test="dishName != null" >
+        DISH_NAME = #{dishName,jdbcType=VARCHAR},
+      </if>
+      <if test="dishTypeId != null" >
+        DISH_TYPE_ID = #{dishTypeId,jdbcType=BIGINT},
+      </if>
+      <if test="dishImgUrl != null" >
+        DISH_IMG_URL = #{dishImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="totalNumber != null" >
+        TOTAL_NUMBER = #{totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isBargainFlag != null" >
+        IS_BARGAIN_FLAG = #{isBargainFlag,jdbcType=BIT},
+      </if>
+      <if test="creationTime != null" >
+        CREATION_TIME = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedTime != null" >
+        LAST_UPDATED_TIME = now(),
+      </if>
+      <if test="lastUpdatedBy != null" >
+        LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendIndex != null" >
+        RECOMMEND_INDEX = #{recommendIndex,jdbcType=REAL},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DISH_ID = #{dishId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doft.pojo.Dish" >
+    update T_DOFT_DISHES
+    set DISH_NAME = #{dishName,jdbcType=VARCHAR},
+      DISH_TYPE_ID = #{dishTypeId,jdbcType=BIGINT},
+      DISH_IMG_URL = #{dishImgUrl,jdbcType=VARCHAR},
+      PRICE = #{price,jdbcType=DECIMAL},
+      TOTAL_NUMBER = #{totalNumber,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=INTEGER},
+      IS_BARGAIN_FLAG = #{isBargainFlag,jdbcType=BIT},
+      CREATION_TIME = #{creationTime,jdbcType=TIMESTAMP},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      LAST_UPDATED_TIME = #{lastUpdatedTime,jdbcType=TIMESTAMP},
+      LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType=VARCHAR},
+      RECOMMEND_INDEX = #{recommendIndex,jdbcType=REAL},
+      DESCRIPTION = #{description,jdbcType=VARCHAR}
+    where DISH_ID = #{dishId,jdbcType=BIGINT}
+  </update>
+
+
+  <select id="selectList" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM T_DOFT_DISHES
+--     WHERE STATUS != 3
+    ORDER BY DISH_ID ASC
+  </select>
+
+  <select id="selectByNameAndDishId" resultMap="BaseResultMap" parameterType="map">
+    SELECT <include refid="Base_Column_List"/>
+    FROM T_DOFT_DISHES
+    <where>
+      <if test="dishName != null">
+        AND DISH_NAME LIKE #{dishName}
+      </if>
+      <if test="dishId != null">
+        AND DISH_ID = #{dishId}
+      </if>
+    </where>
+
+
+  </select>
+
+  <select id="selectByDishId" parameterType="Long" resultMap="BaseResultMap">
+
+    SELECT <include refid="Base_Column_List"/>
+    FROM T_DOFT_DISHES
+    WHERE DISH_ID = #{dishId}
+  </select>
+
+  <select id="selectByNameAndDishTypeId" resultMap="BaseResultMap" parameterType="map">
+    SELECT <include refid="Base_Column_List"/>
+    FROM T_DOFT_DISHES
+    WHERE STATUS = 1
+    AND TOTAL_NUMBER > 0
+    <if test="dishName != null">
+      AND DISH_NAME LIKE #{dishName}
+    </if>
+    <if test="dishTypeId != null">
+      AND DISH_TYPE_ID = #{dishTypeId}
+    </if>
+  </select>
+
+  <select id="selectByDishType" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from T_DOFT_DISHES
+    where DISH_TYPE_ID = #{dishTypeId,jdbcType=BIGINT}
+  </select>
+
+  <select id="countByCreatedTime" resultType="java.lang.Long" parameterType="map">
+    SELECT COUNT(1)
+    FROM T_DOFT_DISHES
+    WHERE CREATION_TIME BETWEEN #{begin} AND #{end}
+  </select>
+
+  <select id="selectSeat" resultMap="BaseResultMap" parameterType="String">
+    SELECT <include refid="Base_Column_List"/>
+    FROM T_DOFT_DISHES
+    WHERE DISH_NAME = #{seatName}
+  </select>
+
+</mapper>

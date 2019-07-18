@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>历史订单</title>
+    <link rel="stylesheet" href="../resource/css/bootstrap.min.css" >
+    <!--<link rel="stylesheet" href="../resource/css/jquery-ui.min.css"-->
+    <link rel="stylesheet" href="../css/common.css">
+    <!-- 订单中心样式 -->
+    <link rel="stylesheet" href="../css/order.css">
+    <script type="text/javascript" src="../resource/js/jquery-ui.min.js"></script>
+
+    <style>
+        /*全局设置*/
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 微软雅黑;
+        }
+        .order_history{
+            min-height: 550px; /*设置了最小高度后li就正常了*/
+            width: 100%;
+        }
+        /*设置列表条目格式*/
+        .order_history ul{
+            list-style: none;
+            margin: 0;
+            padding:0;
+        }
+        .order_history li{
+            margin: 10px 0 10px 0;
+            padding:0;
+            height: 44px;
+            width: 100%;
+        }
+        /*筛选按钮样式*/
+        .filter{
+            margin-bottom: 10px;
+        }
+        .text_btn{
+            color: #4ea7c5;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            border: none;
+            box-shadow: none;
+            background: white;
+            margin-left: 5%;
+            padding: 0;
+        }
+
+        /*订单详情标题*/
+        .order_title{
+            margin-top:0;
+            margin-left:0;
+            height: 44px;
+            width: 100%;
+        }
+        /*圆点格式*/
+        .round{
+            height:44px;
+            width: 5%;
+            display: inline-block;
+            float: left;
+        }
+        .round p{
+            margin: 10px 0 10px 50%;
+            height:20px;
+            width: 50%;
+            font-size:24px;
+            text-align:center;
+            color:#fb9101;
+            text-decoration:none;
+        }
+
+        /*订单号_订单时间div*/
+        .order_no_time{
+            height: 44px;
+            width: 45%;
+            display: inline-block;
+            float: left;
+        }
+        /*订单号*/
+        #order_no_p{
+            margin:4px 0 0 5%;
+            padding: 0;
+            height: 18px;
+            width: 95%;
+            color: #fb9101;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        /*订单完成时间*/
+        #order_time_p{
+            margin:3px 0 3px 5%;
+            padding:0;
+            height: 16px;
+            width: 95%;
+            color: rgb(155,155,155);
+            font-size: 12px;
+            font-weight: bold;
+        }
+        /*订单状态*/
+        .order_status{
+            height: 44px;
+            width: 15%;
+            display: inline-block;
+            float: left;
+        }
+        #order_status_p{
+            margin:12px 0 12px 5%;
+            padding: 0;
+            height: 20px;
+            width: 95%;
+            display: inline-block;
+            color: rgb(155,155,155);
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .order_price{
+            height: 44px;
+            width: 15%;
+            display: inline-block;
+            float: left;
+        }
+        .order_price p{
+            margin:12px 0 12px 5%;
+            height: 20px;
+            width:95%;
+            display: inline-block;
+            color: rgb(155,155,155);
+            font-size: 16px;
+            font-weight: bold;
+
+        }
+
+        .delete_btn{
+            height: 44px;
+            width: 20%;
+            display: inline-block;
+            float: left;
+        }
+        .delete_btn button{
+            margin: 7px 5% 7px 5%;
+            padding: 0;
+            height: 30px;
+            width: 90%;
+            background: #fb9101;
+            color: white;
+            font-size: 20px;
+            border-style: none;
+        }
+    </style>
+
+    <!--<script>
+        function loadHistoryOrder() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange=function () {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    data=xmlhttp.responseText;
+                    data.forEach(orderListFunction) ;
+                }
+            }
+            xmlhttp.open("GET" , "/doft/getOrderByUsersId.aj" ,true );
+            xmlhttp.send();
+        }
+        function orderListFunction(order) {
+            order.orderNo
+        }
+    </script>-->
+
+</head>
+<body>
+<div id="left">
+    <!-- 侧边栏 -->
+    <div id="sideBar">
+        <ul class="nav  nav-stacked">
+            <li id="01" class="bar"><a href="./order.html">订单详情</a></li>
+            <li id="02" class="bar"><a href="#">历史订单</a></li>
+        </ul>
+    </div>
+</div>
+<div id="contain">
+    <!-- 订单筛选器 -->
+    <div class="filter">
+        <button class="text_btn btn " style="margin-left: 5%" >默认</button>
+        <button class="text_btn btn " style="margin-left: 5%">时间</button>
+        <button class="text_btn btn " style="margin-left: 5%">价格</button>
+        <button class="text_btn btn " style="margin-left: 5%">状态</button>
+    </div>
+    <!-- 订单号 -->
+    <div class="order_history">
+        <ul>
+            <li>
+                <div class="order_title">
+                    <div class="round">
+                        <p>●</p>
+                    </div>
+                    <div class="order_no_time">
+                        <p  id="order_no_p">订单号: <span>000001</span></p>
+                        <p  id="order_time_p">2018.03.10 12:04--2018.03.10 12:34</p>
+                    </div>
+                    <div class="order_status">
+                        <p id="order_status_p">已取消</p>
+                    </div>
+                    <div class="order_price">
+                        <p>￥<span>324</span></p>
+                    </div>
+                    <div class="delete_btn">
+                        <button>删除</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="order_title">
+                    <div class="round">
+                        <p>●</p>
+                    </div>
+                    <div class="order_no_time">
+                        <p  id="order_no_p">订单号:<span>000001</span></p>
+                        <p  id="order_time_p">2018.03.10 12:04--2018.03.10 12:34</p>
+                    </div>
+                    <div class="order_status">
+                        <p  id="order_status_p">已结账</p>
+                    </div>
+                    <div class="order_price">
+                        <p>￥<span>324</span></p>
+                    </div>
+                    <div class="delete_btn">
+                        <button>删除</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="order_title">
+                    <div class="round">
+                        <p>●</p>
+                    </div>
+                    <div class="order_no_time">
+                        <p  id="order_no_p">订单号: 000001</p>
+                        <p  id="order_time_p">2018.03.10 12:04--2018.03.10 12:34</p>
+                    </div>
+                    <div class="order_status">
+                        <p  id="order_status_p">已取消</p>
+                    </div>
+                    <div class="order_price">
+                        <p >￥<span>324</span></p>
+                    </div>
+                    <div class="delete_btn">
+                        <button>删除</button>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="order_title">
+                    <div class="round">
+                        <p>●</p>
+                    </div>
+                    <div class="order_no_time">
+                        <p id="order_no_p">订单号: <span>000001</span></p>
+                        <p id="order_time_p">2018.03.10 12:04--2018.03.10 12:34</p>
+                    </div>
+                    <div class="order_status">
+                        <p  id="order_status_p">已完成</p>
+                    </div>
+                    <div class="order_price">
+                        <p >￥<span>324</span></p>
+                    </div>
+                    <div class="delete_btn">
+                        <button>删除</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

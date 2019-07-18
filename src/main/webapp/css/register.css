@@ -1,0 +1,369 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+    height: 800px;
+    width:100%;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    /*background-color: white;*/
+    overflow:scroll;
+    overflow-y:hidden;
+}
+.login{
+    /*margin-top:10px;*/
+    left:0px;
+    height: 800px;
+    width: 100%;
+    background: #F7F7F7;
+}
+
+.login_left{
+    height: 500px;
+    width:60%;
+    display: inline-block;
+    float: left;
+    /*display: none;*/
+}
+.login_left_img{
+    margin: 50px 1% 50px 1%;
+    height: 400px;
+    width: 97%;
+    /*border-right: 2px solid rgb(214,214,214);*/
+}
+.login_left_img img{
+    margin: 34px 4px 34px 4px ;
+    padding: 0;
+    height: auto;
+    width: 97%;
+}
+
+/*.login_left_img{*/
+    /*float: left;*/
+    /*!*margin-top:50px;*!*/
+    /*margin-top:80px;*/
+    /*margin-left: 50px;*/
+    /*!*padding: 50px;*!*/
+/*}*/
+/*.login_left_img img{*/
+    /*!*width: 400px;*!*/
+    /*width: 500px;*/
+/*}*/
+
+.form_wrapper{
+    height: 500px;
+    width: 40%;
+    display: inline-block;
+    float: left;
+    /*margin-left: 60%;*/
+}
+/*.bigLogo{*/
+    /*height:0 ;*/
+    /*width: 0;*/
+    /*display: none;*/
+/*}*/
+/*.bigLogo img{*/
+    /*height: 0;*/
+    /*width: 0;*/
+    /*display: none;*/
+/*}*/
+#form_login{
+    margin: 100px 5% 100px 5%;
+    padding: 0;
+    height: 300px;
+    width: 90%;
+}
+.oneform{
+    margin: 5px 5% 5px 0;
+    display: block;
+    width: 95%;
+    height: 50px;
+}
+.form_label{
+    height: 50px;
+    width:30%;
+    min-width: 32px;
+    display: inline-block;
+    float: left;
+}
+.form_label label{
+    margin: 15px 0 15px 0;
+    height: 20px;
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    font-family: Tahoma;
+    font-weight: bold;
+}
+.form_input{
+    height: 50px;
+    width: 70%;
+    display: inline-block;
+    float: left;
+}
+.form_input input{
+    margin: 9px 5% 9px 0;
+    height: 32px;
+    width: 95%;
+    min-width: 70px;
+    border: 1px solid lightgray;
+    box-shadow: none;
+    outline: none;
+    /*background-color:transparent;*/
+}
+
+/*.form_wrapper{
+    float: right;
+    padding-top: 120px;
+    width: 360px;
+}*/
+/*#form_login{*/
+    /*margin: auto;*/
+    /*height: 364px!important;*/
+/*}*/
+/*.oneform{*/
+    /*width: 280px;*/
+    /*height: 40px;*/
+    /*padding: 10px 0;*/
+/*}*/
+/*.form_label{*/
+    /*float: left;*/
+    /*padding: 4px;*/
+    /*width: 76px;*/
+/*}*/
+/*.form_input{*/
+    /*float: right;*/
+    /*padding: 2px;*/
+/*}*/
+/*.form_input input {*/
+    /*!*display: block;*!*/
+    /*float: left;*/
+    /*width: 190px;*/
+    /*height: 30px;*/
+    /*border:1px solid lightgray;*/
+    /*background-color:white;*/
+    /*outline: none;*/
+/*}*/
+
+
+/*.form_input #send_number_button{*/
+    /*color: #666;*/
+    /*width: 60px !important;*/
+    /*height: 100%;*/
+    /*outline: 0;*/
+    /*cursor: pointer;*/
+    /*display: inline-block;*/
+    /*font-size: 8px;*/
+    /*!*font-weight: 700;*!*/
+    /*!*line-height: 14px;*!*/
+/*}*/
+
+#vali{
+    min-width: 80px;
+    width: 53%;
+    margin: 0;
+}
+#send-number-button{
+    color: #666;
+    min-width: 67px;
+    width: 40%;
+    height: 32px;
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 10px;
+    margin-top: 5px;
+    background: transparent;
+}
+#hint_msg{
+    font-size: 10px;
+    color: #fb9101;
+    width: 190px;
+    float: left;
+}
+/*#login a{
+    text-decoration: none;
+    color: #666666;
+    font-size: 10px;
+    float: right;
+}*/
+
+#login{
+    margin-right: 5%;
+    height: 50px;
+    width: 14%;
+    display: inline-block;
+    float: right;
+}
+#login p{
+    margin: 1px 0 1px 0;
+    height: 20px;
+    text-align: right;
+    width: 100%;
+    min-width: 40px;
+    font-size: 18px;
+}
+#login a{
+    text-decoration: none;
+    color: #666666;
+}
+
+#hint_msg{
+    margin: 0 16% 0 15%;
+    height: 12px;
+    width: 69%;
+}
+#error_msg{
+    margin: 1px 0 1px 0;
+    height: 10px;
+    width: 100%;
+    color: #fb9101;
+    font-size: 10px;
+}
+
+/*注册按钮样式*/
+#register_btn{
+    margin-right: 5%;
+    width: 95%;
+    background:#fb9101;
+    /*width:100%;*/
+    height: 40px;
+    text-align: center;
+    color:white;
+    font-size: 20px;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    overflow: hidden;
+    position: relative;
+}
+
+/*#register_btn{
+    background:#fb9101;
+    width:100%;
+    height: 40px;
+    text-align: center;
+    color:white;
+    font-size: 20px;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    overflow: hidden;
+    position: relative;
+}*/
+@media screen and(min-width: 1000px) {
+    #vali{
+        width: 80px;
+    }
+    #send-number-button{
+        color: #666;
+        width: 67px;
+        height: 32px;
+        outline: none;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 10px;
+        margin-top: 5px;
+        background: transparent;
+    }
+}
+@media screen and (max-device-width: 640px){
+    #vali{
+        width: 44%;
+        margin: 0;
+    }
+    #send-number-button{
+        color: #666;
+        width: 40%;
+        min-width: 67px;
+        height: 32px;
+        outline: none;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 20px;
+        margin-top: 5px;
+        background: transparent;
+    }
+    .login{
+        left: 0px;
+        height: 1495px;
+        width: 100%;
+        background: #FEFEFB;
+    }
+
+    .login_left_img{
+        display: none;
+        float: left;
+        /* margin-top: 50px; */
+        margin-top: 80px;
+        margin-left: 50px;
+        /* padding: 50px; */
+    }
+    .form_wrapper{
+        padding-top: 200px;
+        width: 100%;
+    }
+    .login_left{
+        display: none;
+    }
+    #form_login{
+        height: 600px;
+        margin-left: 137px;
+    }
+    .form_label label{
+        font-size: 30px;
+        margin-left: 60px;
+    }
+    .form_input input{
+        width: 70%;
+        height: 55px;
+        font-size: 20px;
+    }
+    .oneform{
+        width: 92%;
+        height: 70px;
+    }
+    #send-number-button{
+        width: 25%;
+        height: 53px;
+    }
+    #hint_msg{
+        height: 25px;
+    }
+    #error_msg{
+        font-size: 20px;
+        height: 25px;
+    }
+    #login p{
+        font-size: 25px;
+    }
+    #register_btn{
+        margin-right: 0%;
+        width: 72%;
+        background: #fb9101;
+        /* width: 100%; */
+        height: 60px;
+        text-align: center;
+        color: white;
+        font-size: 30px;
+        outline: none;
+        box-shadow: none;
+        border: none;
+        overflow: hidden;
+        position: relative;
+        margin-left: 57px;
+    }
+    #login{
+        margin-right: 22%;
+    }
+    #hint_msg{
+        height: 25px;
+        margin-left: 60px;
+        font-size: 25px;
+    }
+}

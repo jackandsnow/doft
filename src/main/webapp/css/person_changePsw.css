@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -web-kit-appearance:none;
+    -moz-appearance: none;
+    /*delete the css of input box*/
+}
+
+body{
+    overflow:scroll;
+    overflow-y:hidden;
+}
+*:focus { outline: none; }
+.clearfix {
+    overflow: auto;
+}
+/*.left_area{*/
+/*width: 20%;*/
+/*height: 600px;*/
+/*float: left;*/
+/*}*/
+/*.content{*/
+/*background: #FEFEFb;*/
+/*padding: 0 40px;*/
+/*width: 80%;*/
+/*height: 600px;*/
+/*float: left;*/
+/*}*/
+.person_wrapper{
+    padding-top: 10px;
+    min-height: 240px;
+}
+.info{
+    padding-top: 60px;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 20px;
+    font-size: 18px;
+}
+.info_row{
+    height: 50px;
+    color: #FB9100;
+}
+.info_lable{
+    float: left;
+    padding: 0 10px;
+    width: 25%;
+    color: #FB9100;
+}
+#error_msg{
+    padding-left: 10px;
+    width: 300px;
+    height: 40px;
+    font-size: 10px;
+}
+.info_input{
+    float: right;
+    width: 70%;
+    height: 40px;
+}
+.but_group{
+    padding: 10px;
+    float: right;
+}
+.but1{
+    /* Rectangle: */
+    width: 120px;
+    height: 30px;
+    padding: 2px;
+    background: #FB9100;
+    border-radius: 4px;
+    font-family: PingFangSC-Semibold;
+    font-size: 14px;
+    color: #FFFFFF;
+    text-align: center;
+    border: none;
+}

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            height: 800px;
+            width:100%;
+            font-family: "微软雅黑";
+            font-size: 16px;
+            background-color: white;
+        }
+        .login{
+            position: fixed;
+            left:0px;
+            height: 500px;
+            width: 100%;
+            background:#f7f7f7;
+            display: block;
+            overflow: hidden;
+        }
+        /*左侧登录图片样式*/
+        .login_left{
+            position: fixed;
+            left: 0 ;
+            width:60%;
+            height: 500px;
+            display: inline-block;
+            border-right: 2px solid rgb(214,214,214);
+        }
+        .login_left_img img{
+            height: 332px;
+            width: 450px;
+            display: block;
+            padding: 0;
+            margin: auto;
+        }
+        /*手机号密码登录*/
+        .login_phone_password{
+            position: fixed;
+            left: 60%;
+            height: 500px;
+            width: 40%;
+            padding-top:100px;
+            display: inline-block;
+        }
+        .oneform{
+            display: block;
+            width: 100%;
+            height: 40px;
+        }
+        #form_login{
+            width: 80%;
+            margin: auto;
+            margin-bottom:10px;
+        }
+        .form_label{
+            float: left;
+            margin-left:10%;
+            padding-top: 5px;
+            width: 15%;
+            display: inline-block;
+        }
+        .form_label .remember label{
+            display: inline-block;
+            vertical-align: middle;
+            font-family: Tahoma;
+            font-weight: bold;
+        }
+        .form_input{
+            float: left;
+            width: 60%;
+            display:inline-block;
+        }
+        .form_input input{
+            display: block;
+            width:100%;
+            height:30px;
+        }
+        .form_input .remember input{
+            height: 60px;
+            display: inline-block;
+            vertical-align: center;
+        }
+        .remember{
+            margin-left: 25%;
+            width:60%;
+            display: inline-block;
+            margin-bottom:20px;
+        }
+        /*登录按钮样式*/
+        .login_btn{
+            margin-left:25%;
+            width: 60%;
+        }
+        .login_btn button{
+            background:#fb9101;
+            width:100%;
+            height: 40px;
+            text-align: center;
+            color:white;
+            font-size: 20px;
+            outline: none;
+            box-shadow: none;
+            border: none;
+            overflow: hidden;
+            position: relative;
+        }
+        /*波浪样式*/
+        #span{
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            transition: all 0.6s ease-in;
+            background-color: white;
+            opacity: .2;
+            border-radius: 35px;
+        }
+    </style>
+</head>
+<body>
+<div class="login">
+    <!-- 登录左侧图片 -->
+    <div class="login_left" >
+        <div class="login_left_img">
+            <img src="../resource/img/login_left.jpg">
+        </div>
+    </div>
+
+    <!-- 手机号登录 -->
+    <div class="login_phone_password">
+        <!-- 登录表单 -->
+        <form id="form_login">
+            <div class="oneform">
+                <div class="form_label">
+                    <label>中国</label>
+                </div>
+                <div class="form_input">
+                    <input type="text" name="phoneNumber" placeholder="手机号">
+                </div>
+            </div>
+            <div class="oneform">
+                <div class="form_label">
+                    <label >密码 </label>
+                </div>
+                <div class="form_input">
+                    <input type="text" name="phoneNumber" placeholder="密码">
+                </div>
+            </div>
+            <!-- 记住手机号 -->
+            <div class="oneform">
+                <div class="remember">
+                    <input type="checkbox" name="checkbox">
+                    <label >记住手机号</label>
+                </div>
+            </div>
+
+            <!-- 登录按钮 -->
+            <div class="oneform">
+                <div class="login_btn">
+                    <button type="submit" form="form_login" id="btn">登录</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+<script>
+    //可以执行一次点击效果
+    var oneClick = true;
+    document.getElementById("btn").addEventListener('click',function(e){
+        //判断是否可以执行一次点击效果
+        // --因为执行波浪效果需要时间，一次波浪结束之后允许执行下一次点击
+        if (oneClick){
+            this.innerHTML += "<span id='span'></span>";
+            //获取点击时的坐标
+            var event = e || window.event;
+            var x = event.clientX;
+            var y = event.clientY;
+            //获取按钮的坐标
+            var moveX = document.getElementById("btn").offsetLeft;
+            var moveY = document.getElementById("btn").offsetTop;
+            //获取按钮宽度
+            var btnWidth = document.getElementById("btn").clientWidth;
+            //设置点击后波浪样式
+            document.getElementById("span").style.borderRadius = 0;
+            document.getElementById("span").style.width = parseInt(btnWidth)*2+'px';
+            document.getElementById("span").style.left = x-moveX-5+'px';
+            document.getElementById("span").style.marginLeft = -btnWidth+'px';
+            document.getElementById("span").style.height = parseInt(btnWidth)*2+'px';
+            document.getElementById("span").style.top = y-moveY-5+'px';
+            document.getElementById("span").style.marginTop = -btnWidth+'px';
+            //定时删除波浪
+            setTimeout(function(){
+                document.getElementById("span").remove();
+                oneClick = true;
+            },600);
+            //不可以执行一次点击效果
+            oneClick = false;
+        }else {
+            return false;
+        }
+    })
+</script>
+</body>
+</html>

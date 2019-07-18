@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doft.dao.MessageEventMapper" >
+  <resultMap id="BaseResultMap" type="com.doft.pojo.MessageEvent" >
+    <constructor >
+      <idArg column="MESSAGE_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="MESSAGE_TYPE" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="TITLE" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CONTENT" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SEND_TO_USER_ID" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SEND_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="ORDER_NO" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IS_DELETED_FLAG" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="DELETED_BY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DELETED_DATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    MESSAGE_ID, MESSAGE_TYPE, TITLE, CONTENT, SEND_TO_USER_ID, SEND_TIME, ORDER_NO, IS_DELETED_FLAG, 
+    DELETED_BY, DELETED_DATE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doft.pojo.MessageEventExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_DOFT_MESSAGE_EVENTS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_DOFT_MESSAGE_EVENTS
+    where MESSAGE_ID = #{messageId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from T_DOFT_MESSAGE_EVENTS
+    where MESSAGE_ID = #{messageId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doft.pojo.MessageEventExample" >
+    delete from T_DOFT_MESSAGE_EVENTS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doft.pojo.MessageEvent" >
+    insert into T_DOFT_MESSAGE_EVENTS (MESSAGE_ID, MESSAGE_TYPE, TITLE, 
+      CONTENT, SEND_TO_USER_ID, SEND_TIME, 
+      ORDER_NO, IS_DELETED_FLAG, DELETED_BY, 
+      DELETED_DATE)
+    values (#{messageId,jdbcType=BIGINT}, #{messageType,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{sendToUserId,jdbcType=VARCHAR}, #{sendTime,jdbcType=TIMESTAMP}, 
+      #{orderNo,jdbcType=VARCHAR}, #{isDeletedFlag,jdbcType=BIT}, #{deletedBy,jdbcType=VARCHAR}, 
+      #{deletedDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doft.pojo.MessageEvent" >
+    insert into T_DOFT_MESSAGE_EVENTS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="messageId != null" >
+        MESSAGE_ID,
+      </if>
+      <if test="messageType != null" >
+        MESSAGE_TYPE,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="sendToUserId != null" >
+        SEND_TO_USER_ID,
+      </if>
+      <if test="sendTime != null" >
+        SEND_TIME,
+      </if>
+      <if test="orderNo != null" >
+        ORDER_NO,
+      </if>
+      <if test="isDeletedFlag != null" >
+        IS_DELETED_FLAG,
+      </if>
+      <if test="deletedBy != null" >
+        DELETED_BY,
+      </if>
+      <if test="deletedDate != null" >
+        DELETED_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="messageId != null" >
+        #{messageId,jdbcType=BIGINT},
+      </if>
+      <if test="messageType != null" >
+        #{messageType,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="sendToUserId != null" >
+        #{sendToUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeletedFlag != null" >
+        #{isDeletedFlag,jdbcType=BIT},
+      </if>
+      <if test="deletedBy != null" >
+        #{deletedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedDate != null" >
+        #{deletedDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doft.pojo.MessageEventExample" resultType="java.lang.Integer" >
+    select count(*) from T_DOFT_MESSAGE_EVENTS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_DOFT_MESSAGE_EVENTS
+    <set >
+      <if test="record.messageId != null" >
+        MESSAGE_ID = #{record.messageId,jdbcType=BIGINT},
+      </if>
+      <if test="record.messageType != null" >
+        MESSAGE_TYPE = #{record.messageType,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendToUserId != null" >
+        SEND_TO_USER_ID = #{record.sendToUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendTime != null" >
+        SEND_TIME = #{record.sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderNo != null" >
+        ORDER_NO = #{record.orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDeletedFlag != null" >
+        IS_DELETED_FLAG = #{record.isDeletedFlag,jdbcType=BIT},
+      </if>
+      <if test="record.deletedBy != null" >
+        DELETED_BY = #{record.deletedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deletedDate != null" >
+        DELETED_DATE = #{record.deletedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_DOFT_MESSAGE_EVENTS
+    set MESSAGE_ID = #{record.messageId,jdbcType=BIGINT},
+      MESSAGE_TYPE = #{record.messageType,jdbcType=INTEGER},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      CONTENT = #{record.content,jdbcType=VARCHAR},
+      SEND_TO_USER_ID = #{record.sendToUserId,jdbcType=VARCHAR},
+      SEND_TIME = #{record.sendTime,jdbcType=TIMESTAMP},
+      ORDER_NO = #{record.orderNo,jdbcType=VARCHAR},
+      IS_DELETED_FLAG = #{record.isDeletedFlag,jdbcType=BIT},
+      DELETED_BY = #{record.deletedBy,jdbcType=VARCHAR},
+      DELETED_DATE = #{record.deletedDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doft.pojo.MessageEvent" >
+    update T_DOFT_MESSAGE_EVENTS
+    <set >
+      <if test="messageType != null" >
+        MESSAGE_TYPE = #{messageType,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="sendToUserId != null" >
+        SEND_TO_USER_ID = #{sendToUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null" >
+        SEND_TIME = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderNo != null" >
+        ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeletedFlag != null" >
+        IS_DELETED_FLAG = #{isDeletedFlag,jdbcType=BIT},
+      </if>
+      <if test="deletedBy != null" >
+        DELETED_BY = #{deletedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedDate != null" >
+        DELETED_DATE = #{deletedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where MESSAGE_ID = #{messageId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doft.pojo.MessageEvent" >
+    update T_DOFT_MESSAGE_EVENTS
+    set MESSAGE_TYPE = #{messageType,jdbcType=INTEGER},
+      TITLE = #{title,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      SEND_TO_USER_ID = #{sendToUserId,jdbcType=VARCHAR},
+      SEND_TIME = #{sendTime,jdbcType=TIMESTAMP},
+      ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      IS_DELETED_FLAG = #{isDeletedFlag,jdbcType=BIT},
+      DELETED_BY = #{deletedBy,jdbcType=VARCHAR},
+      DELETED_DATE = #{deletedDate,jdbcType=TIMESTAMP}
+    where MESSAGE_ID = #{messageId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from T_DOFT_MESSAGE_EVENTS
+    where SEND_TO_USER_ID = #{userId,jdbcType=VARCHAR}
+    and IS_DELETED_FLAG = FALSE
+  </select>
+
+</mapper>

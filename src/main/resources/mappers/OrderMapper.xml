@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.doft.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.doft.pojo.Order" >
+    <constructor >
+      <idArg column="ORDER_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="USER_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="ORDER_NO" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="PEOPLE_COUNT" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="DESK_ID" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="TOTAL_PRICE" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="PAYMENT_TYPE" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="DISCOUNT_AMOUNT" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="ORDER_STATUS" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="REMARK" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IS_DELETED_FLAG" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="CREATION_DATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATED_BY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LAST_UPDATED_DATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="LAST_UPDATED_BY" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="END_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="PAYMENT_TIME" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ORDER_ID, USER_ID, ORDER_NO, PEOPLE_COUNT, DESK_ID, TOTAL_PRICE, PAYMENT_TYPE, DISCOUNT_AMOUNT, 
+    ORDER_STATUS, REMARK, IS_DELETED_FLAG, CREATION_DATE, CREATED_BY, LAST_UPDATED_DATE, 
+    LAST_UPDATED_BY, END_TIME, PAYMENT_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.doft.pojo.OrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_DOFT_ORDERS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_DOFT_ORDERS
+    where ORDER_ID = #{orderId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from T_DOFT_ORDERS
+    where ORDER_ID = #{orderId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.doft.pojo.OrderExample" >
+    delete from T_DOFT_ORDERS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.doft.pojo.Order" >
+    insert into T_DOFT_ORDERS (ORDER_ID, USER_ID, ORDER_NO, 
+      PEOPLE_COUNT, DESK_ID, TOTAL_PRICE, 
+      PAYMENT_TYPE, DISCOUNT_AMOUNT, ORDER_STATUS, 
+      REMARK, IS_DELETED_FLAG, CREATION_DATE, 
+      CREATED_BY, LAST_UPDATED_DATE, LAST_UPDATED_BY, 
+      END_TIME, PAYMENT_TIME)
+    values (#{orderId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{orderNo,jdbcType=CHAR}, 
+      #{peopleCount,jdbcType=INTEGER}, #{deskId,jdbcType=BIGINT}, #{totalPrice,jdbcType=DECIMAL}, 
+      #{paymentType,jdbcType=INTEGER}, #{discountAmount,jdbcType=DECIMAL}, #{orderStatus,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{isDeletedFlag,jdbcType=BIT}, now(),
+      #{createdBy,jdbcType=VARCHAR}, now(), #{lastUpdatedBy,jdbcType=VARCHAR},
+      #{endTime,jdbcType=TIMESTAMP}, #{paymentTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doft.pojo.Order" >
+    insert into T_DOFT_ORDERS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        ORDER_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="orderNo != null" >
+        ORDER_NO,
+      </if>
+      <if test="peopleCount != null" >
+        PEOPLE_COUNT,
+      </if>
+      <if test="deskId != null" >
+        DESK_ID,
+      </if>
+      <if test="totalPrice != null" >
+        TOTAL_PRICE,
+      </if>
+      <if test="paymentType != null" >
+        PAYMENT_TYPE,
+      </if>
+      <if test="discountAmount != null" >
+        DISCOUNT_AMOUNT,
+      </if>
+      <if test="orderStatus != null" >
+        ORDER_STATUS,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="isDeletedFlag != null" >
+        IS_DELETED_FLAG,
+      </if>
+      <if test="creationDate != null" >
+        CREATION_DATE,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="lastUpdatedDate != null" >
+        LAST_UPDATED_DATE,
+      </if>
+      <if test="lastUpdatedBy != null" >
+        LAST_UPDATED_BY,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+      <if test="paymentTime != null" >
+        PAYMENT_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=CHAR},
+      </if>
+      <if test="peopleCount != null" >
+        #{peopleCount,jdbcType=INTEGER},
+      </if>
+      <if test="deskId != null" >
+        #{deskId,jdbcType=BIGINT},
+      </if>
+      <if test="totalPrice != null" >
+        #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentType != null" >
+        #{paymentType,jdbcType=INTEGER},
+      </if>
+      <if test="discountAmount != null" >
+        #{discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeletedFlag != null" >
+        #{isDeletedFlag,jdbcType=BIT},
+      </if>
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedDate != null" >
+        #{lastUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdatedBy != null" >
+        #{lastUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentTime != null" >
+        #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.doft.pojo.OrderExample" resultType="java.lang.Integer" >
+    select count(*) from T_DOFT_ORDERS
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_DOFT_ORDERS
+    <set >
+      <if test="record.orderId != null" >
+        ORDER_ID = #{record.orderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderNo != null" >
+        ORDER_NO = #{record.orderNo,jdbcType=CHAR},
+      </if>
+      <if test="record.peopleCount != null" >
+        PEOPLE_COUNT = #{record.peopleCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.deskId != null" >
+        DESK_ID = #{record.deskId,jdbcType=BIGINT},
+      </if>
+      <if test="record.totalPrice != null" >
+        TOTAL_PRICE = #{record.totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.paymentType != null" >
+        PAYMENT_TYPE = #{record.paymentType,jdbcType=INTEGER},
+      </if>
+      <if test="record.discountAmount != null" >
+        DISCOUNT_AMOUNT = #{record.discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderStatus != null" >
+        ORDER_STATUS = #{record.orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDeletedFlag != null" >
+        IS_DELETED_FLAG = #{record.isDeletedFlag,jdbcType=BIT},
+      </if>
+      <if test="record.creationDate != null" >
+        CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdBy != null" >
+        CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastUpdatedDate != null" >
+        LAST_UPDATED_DATE = #{record.lastUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastUpdatedBy != null" >
+        LAST_UPDATED_BY = #{record.lastUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endTime != null" >
+        END_TIME = #{record.endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.paymentTime != null" >
+        PAYMENT_TIME = #{record.paymentTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_DOFT_ORDERS
+    set ORDER_ID = #{record.orderId,jdbcType=BIGINT},
+      USER_ID = #{record.userId,jdbcType=BIGINT},
+      ORDER_NO = #{record.orderNo,jdbcType=CHAR},
+      PEOPLE_COUNT = #{record.peopleCount,jdbcType=INTEGER},
+      DESK_ID = #{record.deskId,jdbcType=BIGINT},
+      TOTAL_PRICE = #{record.totalPrice,jdbcType=DECIMAL},
+      PAYMENT_TYPE = #{record.paymentType,jdbcType=INTEGER},
+      DISCOUNT_AMOUNT = #{record.discountAmount,jdbcType=DECIMAL},
+      ORDER_STATUS = #{record.orderStatus,jdbcType=INTEGER},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      IS_DELETED_FLAG = #{record.isDeletedFlag,jdbcType=BIT},
+      CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
+      CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      LAST_UPDATED_DATE = #{record.lastUpdatedDate,jdbcType=TIMESTAMP},
+      LAST_UPDATED_BY = #{record.lastUpdatedBy,jdbcType=VARCHAR},
+      END_TIME = #{record.endTime,jdbcType=TIMESTAMP},
+      PAYMENT_TIME = #{record.paymentTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doft.pojo.Order" >
+    update T_DOFT_ORDERS
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        ORDER_NO = #{orderNo,jdbcType=CHAR},
+      </if>
+      <if test="peopleCount != null" >
+        PEOPLE_COUNT = #{peopleCount,jdbcType=INTEGER},
+      </if>
+      <if test="deskId != null" >
+        DESK_ID = #{deskId,jdbcType=BIGINT},
+      </if>
+      <if test="totalPrice != null" >
+        TOTAL_PRICE = #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentType != null" >
+        PAYMENT_TYPE = #{paymentType,jdbcType=INTEGER},
+      </if>
+      <if test="discountAmount != null" >
+        DISCOUNT_AMOUNT = #{discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderStatus != null" >
+        ORDER_STATUS = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeletedFlag != null" >
+        IS_DELETED_FLAG = #{isDeletedFlag,jdbcType=BIT},
+      </if>
+      <if test="creationDate != null" >
+        CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedDate != null" >
+        LAST_UPDATED_DATE = now(),
+      </if>
+      <if test="lastUpdatedBy != null" >
+        LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentTime != null" >
+        PAYMENT_TIME = #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ORDER_ID = #{orderId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doft.pojo.Order" >
+    update T_DOFT_ORDERS
+    set USER_ID = #{userId,jdbcType=BIGINT},
+      ORDER_NO = #{orderNo,jdbcType=CHAR},
+      PEOPLE_COUNT = #{peopleCount,jdbcType=INTEGER},
+      DESK_ID = #{deskId,jdbcType=BIGINT},
+      TOTAL_PRICE = #{totalPrice,jdbcType=DECIMAL},
+      PAYMENT_TYPE = #{paymentType,jdbcType=INTEGER},
+      DISCOUNT_AMOUNT = #{discountAmount,jdbcType=DECIMAL},
+      ORDER_STATUS = #{orderStatus,jdbcType=INTEGER},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      IS_DELETED_FLAG = #{isDeletedFlag,jdbcType=BIT},
+      CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      LAST_UPDATED_DATE = #{lastUpdatedDate,jdbcType=TIMESTAMP},
+      LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType=VARCHAR},
+      END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      PAYMENT_TIME = #{paymentTime,jdbcType=TIMESTAMP}
+    where ORDER_ID = #{orderId,jdbcType=BIGINT}
+  </update>
+
+
+  <select id="selectByUserIdAndOrderNo" resultMap="BaseResultMap" parameterType="map">
+    SELECT <include refid="Base_Column_List"/>
+    FROM T_DOFT_ORDERS
+    WHERE USER_ID = #{userId}
+    AND ORDER_NO = #{orderNo}
+  </select>
+
+  <select id="selectByOrderNo" resultMap="BaseResultMap" parameterType="String">
+    SELECT <include refid="Base_Column_List"/>
+    FROM T_DOFT_ORDERS
+    WHERE ORDER_NO = #{orderNo}
+
+  </select>
+
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="Long">
+    SELECT <include refid="Base_Column_List"/>
+    FROM T_DOFT_ORDERS
+    WHERE USER_ID = #{userId}
+    AND IS_DELETED_FLAG = FALSE
+--     AND ORDER_STATUS > 2
+    ORDER BY CREATION_DATE DESC
+  </select>
+
+
+  <select id="selectAllOrders" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM T_DOFT_ORDERS
+    WHERE IS_DELETED_FLAG = FALSE
+    ORDER BY ORDER_NO ASC
+  </select>
+
+  <select id="selectByCreatedBy" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM T_DOFT_ORDERS
+    WHERE CREATED_BY = #{createdBy,jdbcType=VARCHAR}
+    AND IS_DELETED_FLAG = FALSE
+  </select>
+
+  <select id="countByCreatedTime" resultType="java.lang.Long" parameterType="map">
+    SELECT COUNT(1)
+    FROM T_DOFT_ORDERS
+    WHERE CREATION_DATE BETWEEN #{begin} AND #{end}
+  </select>
+
+  <select id="countByCreatedTimeAndStatus" resultType="java.lang.Long" parameterType="map">
+    SELECT COUNT(1)
+    FROM T_DOFT_ORDERS
+    WHERE CREATION_DATE BETWEEN #{begin} AND #{end}
+    AND ORDER_STATUS &lt; #{status}
+  </select>
+
+</mapper>

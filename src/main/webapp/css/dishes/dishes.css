@@ -1,0 +1,353 @@
+*{
+    margin: 0px;
+    padding:0px;
+}
+
+.filter{
+    display: block;
+    width: 100%;
+    margin: 3px;
+    height: 30px;
+}
+.text_btn{
+    display: inline-block;
+    border: none;
+    background: none;
+    box-shadow: none;
+}
+.dish_list{
+    display: block;
+    width: 100%;
+    min-height: 550px;
+    margin: 3px;
+    margin-top: 0px;
+}
+.dish_list ul{
+    padding: 0px;
+    margin: 0px;
+}
+.dish_list li{
+    list-style: none;
+}
+.dish_list .dish{
+    display: block;
+    width: 100%;
+    height: 80px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+.dish_img,.dish_inf,.dish_add_pb{
+    display: inline-block;
+    float: left;
+    /*margin-right: 10px;*/
+}
+.dish_inf_money,.dish_inf_recommand{
+    display: inline-block;
+}
+.dish .dish_img{
+    width: 20%;
+    height: 80px;
+}
+.dish .dish_inf{
+    width: 50%;
+    height: 80px;
+    overflow: hidden;
+}
+.dish_inf .dish_inf_name{
+    padding: 3px;
+    width: 100%;
+    height: 35%;
+    font-size: 20px;
+}
+.dish_inf .dish_inf_money_and_recommand{
+    width: 100%;
+    height: 35%;
+}
+.dish_inf .dish_inf_money_and_recommand .dish_inf_money{
+    color: #fb9100;
+    font-size: 18px;
+    margin-right: 10px;
+}
+.dish_inf .dish_inf_dec{
+    width: 100%;
+    height: 30%;
+    color: grey;
+    padding-bottom: 5px;
+}
+.dish .dish_add_pb{
+    width: 30%;
+    height: 80px;
+    padding:auto 0px;
+}
+.com_btn{
+    /*position: absolute;*/
+    float: left;
+    width: 80%;
+    max-width: 150px;
+    min-width: 60px;
+    height: 30px;
+    margin-top: 22px;
+    /* Rectangle: */
+    background: #FB9100;
+    border-radius: 4px;
+    /* 加入购物车: */
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #FFFFFF;
+    border: none;
+    z-index: 3;
+    outline: none;
+}
+/*进行图片拉伸*/
+.dish img{
+    margin-left: 10%;
+    height: 80px;
+    width: 80px;
+}
+
+/*加减控制按钮*/
+.pb_num{
+    position: absolute;
+    z-index: 5;
+    width: 80%;
+    max-width: 150px;
+    min-width: 60px;
+    height: 30px;
+    margin-top: 22px;
+    /* Rectangle: */
+    background-color: #EEEEEC;
+    border-radius: 4px;
+    /* 加入购物车: */
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    /*color: #FB9100;*/
+    border: none;
+}
+.pb_num .dec{
+    display: inline-block;
+    height: 100%;
+    width: 30%;
+    float: left;
+    border-right: solid gainsboro 1px;
+    color: #FB9100;
+    text-align: center;
+    cursor: pointer;
+}
+.pb_num .add{
+    display: inline-block;
+    /*padding-left: 7%;*/
+    height: 100%;
+    width: 27%;
+    float: left;
+    color: #FB9100;
+    border-left: solid gainsboro 1px;
+    text-align: center;
+    cursor: pointer;
+}
+.pb_num .num{
+    display: inline-block;
+    height: auto;
+    width: 30%;
+    float: left;
+    color: #FB9100;
+    text-align: center;
+    font-style: normal;
+    /*font-size: 14px;*/
+    /*line-height: 24px;*/
+    border: 0;
+    background:none;
+    overflow: hidden;
+}
+.pb_num .num input{
+    display: block;
+    height: 40px;
+    width: 90%;
+    text-align: center;
+    /*font-size: 14px;*/
+    /*line-height: 24px;*/
+    border: 0px;
+    background:none;
+    box-shadow:none;
+}
+#empty_tips{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-top: 30%;
+    /*margin-left: 15px;*/
+    color: #fb9100;
+}
+
+
+
+@media screen and (max-device-width: 640px){
+    .dish_list{
+        display: block;
+        width: 100%;
+        min-height: 1320px;
+        margin: 3px;
+        margin-top: 0px;
+        font-size: 25px;
+        height: 88%;
+        padding-bottom: 13%;
+    }
+    .dish_list .dish {
+        display: block;
+        width: 100%;
+        height: 150px;
+        margin-bottom: 30px;
+        overflow: hidden;
+    }
+    .dish .dish_img{
+        width: 20%;
+        height: 150px;
+    }
+    .dish .dish_inf{
+        width: 45%;
+        height: 150px;
+        overflow: hidden;
+        margin-left: 5%;
+    }
+    .dish_inf .dish_inf_name{
+        padding: 3px;
+        width: 100%;
+        height: 35%;
+        font-size: 30px;
+        padding-top: 10px;
+    }
+    .dish_inf .dish_inf_money_and_recommand{
+        width: 100%;
+        height: 35%;
+    }
+    .dish_inf .dish_inf_money_and_recommand .dish_inf_money{
+        color: #fb9100;
+        font-size: 30px;
+        margin-right: 8px;
+    }
+    .dish_inf .dish_inf_dec{
+        width: 100%;
+        height: 30%;
+        color: grey;
+        padding-bottom: 10px;
+    }
+    .dish .dish_add_pb{
+        width: 27%;
+        height: 150px;
+        padding:auto 0px;
+    }
+    .com_btn{
+        width: 80%;
+        max-width: 100px;
+        min-width: 55px;
+        height: 30px;
+        margin-top: 22px;
+        /* Rectangle: */
+        background: #FB9100;
+        border-radius: 4px;
+        /* 加入购物车: */
+        font-family: PingFangSC-Regular;
+        font-size: 15px;
+        color: #FFFFFF;
+        border: none;
+    }
+    /*进行图片拉伸*/
+    .dish img {
+        margin-left: 10%;
+        height: 140px;
+        width: 140px;
+    }
+
+    .text_btn{
+        display: inline-block;
+        border: none;
+        background: none;
+        box-shadow: none;
+        font-size: 25px;
+        padding: 20px;
+    }
+
+    .filter{
+        display: block;
+        width: 100%;
+        margin: 3px;
+        height: 60px;
+
+    }
+    .dish .dish_add_pb{
+        width: 29%;
+        height: 150px;
+        padding:auto 0px;
+    }
+    .com_btn {
+        width: 95%;
+        max-width: 200px;
+        min-width: 60px;
+        height: 50px;
+        margin-top: 22px;
+        background: #FB9100;
+        border-radius: 4px;
+        font-family: PingFangSC-Regular;
+        font-size: 25px;
+        color: #FFFFFF;
+        border: none;
+    }
+    .pb_num{
+        position: absolute;
+        z-index: 5;
+        width: 95%;
+        max-width: 200px;
+        min-width: 60px;
+        height: 50px;
+        margin-top: 22px;
+        background-color: #EEEEEC;
+        border-radius: 4px;
+        font-family: PingFangSC-Regular;
+        font-size: 30px;
+        /* color: #FB9100; */
+        border: none;
+        overflow: hidden;
+
+    }
+    .pb_num .num{
+        display: inline-block;
+        height: auto;
+        width: 30%;
+        float: left;
+        color: #FB9100;
+        text-align: center;
+        font-style: normal;
+        font-size: 28px;
+        /* line-height: 10px; */
+        border: 0;
+        background: none;
+        overflow: hidden;
+    }
+    .pb_num .dec{
+        display: inline-block;
+        height: 100%;
+        width: 30%;
+        float: left;
+        border-right: solid gainsboro 1px;
+        color: #FB9100;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 8px;
+    }
+    .pb_num .add{
+        display: inline-block;
+        /* padding-left: 7%; */
+        height: 100%;
+        width: 27%;
+        float: left;
+        color: #FB9100;
+        border-left: solid gainsboro 1px;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 8px;
+    }
+    #empty_tips{
+        font-size: 30px;
+    }
+
+}
+
